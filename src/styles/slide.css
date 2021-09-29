@@ -1,0 +1,126 @@
+.appp{
+    font-family: sans-serif;
+    /* text-align: center; */
+   
+    height: auto;
+    width: 100%;
+
+ 
+}
+.container{
+        width:70%;
+        height: 100%;
+        background-color: rgb(255, 255, 255);
+        border-radius:1%;
+        border:solid .1vw;
+        border-color:rgb(180,180,200);
+        transition:.4s;
+        box-shadow: 0vw .5vw .5vw .1vw rgba(68, 68, 68, 0);
+        cursor: pointer;
+}
+.container:hover{
+    box-shadow: 0vw .5vw .5vw .1vw rgb(146, 151, 151);
+}
+.tittle_product{
+   
+    text-align: left;
+    margin-left: 10%;
+}
+.items{
+    margin-top:2%;
+    margin-left: 4%;
+    width: 90%;
+    height: 14vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow:hidden;
+    border-bottom:solid .1vw;
+    border-color: rgb(100,100,100);
+    
+}
+.descriptionProduct{
+    text-align:justify;
+    width:90%;
+    font-size: 70%;
+    margin-bottom: 4%;
+    color: rgb(133, 133, 133);
+    margin-left: 4%;
+}
+.cont_button{
+    position: relative;
+    background-color: rgb(37, 37, 37);
+    width: 90%;
+    margin-top: 5%;
+    border-radius: .4vw;
+    margin-left: 5%;
+    padding-top: 2%;
+    font-size: 80%;
+    margin-bottom: 4%
+}
+.cont_button a{
+   color: rgb(255, 255, 255);
+   position: relative;
+   top: 2%;
+}
+
+.icon_product{
+    position: relative;
+    color:rgb(255, 255, 255);
+    transition:.4s;
+}
+
+.cont_button:hover .icon_product{
+    margin-left: 1vw;
+     
+ }
+ 
+@media screen and (min-width:600px)and (max-width:959px){
+    .cont_button{
+ 
+        border-radius: .6vw;
+        margin-bottom: 4%
+    }
+  
+    .cont_button a{
+        
+        top: 10%;
+     }
+    .items{
+        height: 20vw;
+    }
+ 
+}
+@media screen and (min-width:300px)and (max-width:599px){
+    .container{
+        width:95%;
+        height: 88vw;
+    }
+    .items{
+        height: 42vw;
+    }
+    .descriptionProduct{
+    
+       font-size: 70%;
+       
+        margin-bottom: 2%
+    
+    }
+    .cont_button{
+        
+        border-radius: 1vw;
+  
+    }
+}
+@media screen and (min-width:960px)and (max-width:1366px){
+
+   
+    .descriptionProduct{
+    
+       font-size: 70%;
+       
+        margin-bottom: 2%
+    
+    }
+}

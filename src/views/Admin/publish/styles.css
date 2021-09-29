@@ -1,0 +1,112 @@
+.App {
+    font-family: sans-serif;
+    /* text-align: center; */
+    background-color: #f6f9fe;
+    height: auto;
+    width: 100%;
+    margin-bottom: 2%;
+    box-shadow: 0vw .4vw .4vw 0vw rgb(102, 102, 102);
+    border-radius: .4vw;
+  }
+  *{
+    text-decoration: none;
+  
+  }
+.tittle{
+  font-size: 1.5vw;
+  font-family: 'Open Sans', sans-serif;
+}
+.cont_input{
+  box-shadow: 0vw .4vw .3vw 0vw rgb(136, 136, 136);
+  width: 60%;
+  padding: 5% 5% 12% 5%;
+  margin-left: 25%;
+  border:solid .1vw rgb(177, 177, 177);
+  border-radius: .4vw;
+}
+.input{
+  width: 90%;
+  margin-top: 5%;
+}
+  .image-item {
+    display: flex;
+    background: -webkit-linear-gradient(rgb(255, 255, 255),rgb(235, 235, 235));
+  margin-left: 10%;
+    width: 80%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    text-align: center;
+   box-shadow: 0vw .4vw .3vw 0vw rgb(155, 155, 155);
+   border:solid .1vw rgb(202, 202, 202);
+  }
+  .cont_img{
+    text-align: center;
+    height: 10vw;
+    background-color: rgba(72, 243, 255, 0);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .cont_img >img{
+    resize: both;
+    height: auto;
+    padding:5%;
+  
+    width: 70%;
+   
+  }
+  .image-item__btn-wrapper {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .itemList{
+    width: 90%;
+    height: 30vw;
+    box-shadow: 0vw .2vw .3vw .1vw rgb(179, 178, 178);
+    border:solid .1vw rgb(136, 136, 136);
+    border-radius: .4vw;
+  }
+  .Button{
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }
+  .icon{
+    background: -webkit-linear-gradient(rgb(129, 129, 129),rgb(36, 36, 36));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+      color: rgba(6, 194, 0, 0); 
+ 
+  }
+  .tittle_portada
+  {
+    position:relative;
+margin-bottom: -8%;
+font-size: .6vw;
+font-weight: 700;
+  }
+  .cont_title_card{
+    position:relative
+  }
+  .portada{
+    border:solid .15vw rgb(128, 128, 128);
+  }
+  .cargando{
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(12, 12, 15, 0.8);
+    z-index: 9999;
+
+  }
+  .cargando>p{
+    color: beige;
+    margin-left:2%;
+    
+  }
+  
