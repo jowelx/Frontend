@@ -1,7 +1,7 @@
 import { createTheme } from "@material-ui/core/styles";
 const theme = createTheme({
     palette: {
-      primary: { main: "rgb( 255, 210, 30 )" },
+      primary: { main: "rgb( 250, 200, 50)" },
       secondary: { main: "rgb( 255, 20, 100 )" },
     },
   });

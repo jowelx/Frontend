@@ -79,6 +79,32 @@
       color: rgba(6, 194, 0, 0); 
  
   }
+  .icon_Edit{
+    
+    background: -webkit-linear-gradient(rgb(40, 250, 145),rgb(29, 173, 137));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+      color: rgba(6, 194, 0, 0); 
+
+
+  }
+  .cont_icon{
+    box-shadow: 0 .1vw  .1vw .1vw rgb(189, 189, 189);
+    border-radius: 2vw;
+    width: 3vw;
+    height: 3vw;
+  margin-right: 20%;
+  background: linear-gradient(rgb(248, 248, 248),rgb(236, 236, 236));
+ 
+  }
+  .icon_Delete{
+    
+    background: -webkit-linear-gradient(rgb(255, 0, 55),rgb(197, 45, 45));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+      color: rgba(6, 194, 0, 0); 
+ 
+  }
   .tittle_portada
   {
     position:relative;

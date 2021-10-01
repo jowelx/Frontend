@@ -12,8 +12,6 @@ import Button from '@material-ui/core/Button';
 import UserLoged from './navbarComponents/user'
 const NavBar =()=> {
     const NavBar = navbar()
-
-
       const loveIcon = {
         color: 'secondary',
         children: <FavoriteBorderIcon style={{ color: "rgb(255,255,255)" }}/>,
@@ -22,7 +20,6 @@ const NavBar =()=> {
         color: 'secondary',
         children: <ShoppingCartIcon style={{ color: "rgb(255,255,255)" }}/>,
       };
- 
 return(
     <>
     <div className={NavBar.cont_Nav}>
@@ -41,10 +38,10 @@ return(
     <Grid item md={3}>
 <Grid container>
 <Grid item md={2}>
-<Badge className={NavBar.iconsWhite} badgeContent={1} {...loveIcon} />
+<Badge className={NavBar.iconsWhite} badgeContent={1000000000000000000} {...loveIcon} />
 </Grid>
 <Grid item md={2}>
-<Badge className={NavBar.iconsWhite} badgeContent={1} {...shopIcon} />
+<Badge className={NavBar.iconsWhite} badgeContent={1000000000000000000} {...shopIcon} />
 </Grid>
 <Grid item md={3}>
     <div className={NavBar.contButon}>
