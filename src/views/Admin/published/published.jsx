@@ -1,7 +1,7 @@
+//lista de productos publicados
 import { useState,useEffect } from 'react';
-import { Grid,Typography,IconButton,Icon } from "@material-ui/core";
-import ListProduct from '../../../components/listProduct'
-import { Redirect, Route } from "react-router-dom";
+import { Grid,IconButton,Icon } from "@material-ui/core";
+import { Redirect,Link} from "react-router-dom";
 import React from 'react';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -11,33 +11,12 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-const useStyles = makeStyles({
-    table: {
-      minWidth: 700,
-    },
-  });
-const StyledTableCell = withStyles((theme) => ({
-    head: {
-      backgroundColor: theme.palette.common.black,
-      color: theme.palette.common.white,
-    },
-    body: {
-      fontSize: 14,
-    },
-  }))(TableCell);
-  
-  const StyledTableRow = withStyles((theme) => ({
-    root: {
-      '&:nth-of-type(odd)': {
-        backgroundColor: theme.palette.action.hover,
-      },
-    },
-  }))(TableRow);
+import axios from 'axios'
 const Published =()=> {
-
-const classes = useStyles();
+    const classes = useStyles();
     const url ='http://localhost:5000/';
     const [items,setItems]=useState([]);
+    const[ refresh, setRefresh] =useState( "ok")
     const fetchApi = async() =>{
       const response = await fetch(url);
     
@@ -47,7 +26,19 @@ const classes = useStyles();
     }
     useEffect(()=>{
       fetchApi()
-    },[])
+    },[refresh])
+    const Delete =(id)=>{
+      const url_Delete =`http://localhost:5000/delete/${id}`
+      axios.post(
+        url_Delete,
+        {"file":id
+     
+      })
+     .then(response => { setRefresh( response)
+ 
+   
+    })
+    }
 const redirect=()=>{
  return <Redirect to="/" />
 }
@@ -72,7 +63,7 @@ const redirect=()=>{
       
           </TableRow>
         </TableHead>
-        <TableBody>
+        <TableBody >
           {items.map((item, index) => (
             <StyledTableRow key={index}>
               <StyledTableCell component="th" scope="row">
@@ -91,13 +82,20 @@ const redirect=()=>{
               <StyledTableCell align="center">{item.file.state}</StyledTableCell>
               <StyledTableCell align="center">
                   <Grid container spacing={1}>
-                      <Grid item xs={6}>             <IconButton  className="cont_icon"  aria-label="add to shopping cart">
-       <Icon className="icon_Edit">edit</Icon>
-      </IconButton></Grid>
-                  <Grid item xs={6}>   <IconButton className="cont_icon"  aria-label="add to shopping cart">
-       <Icon className="icon_Delete">delete</Icon>
-      </IconButton>
-</Grid>
+                      <Grid item xs={6}> 
+                      <Link
+                     to={`/Update/${item.file.id}`}
+                     >            
+                      <IconButton  className="cont_icon"  aria-label="add to shopping cart">
+                           <Icon className="icon_Edit">search</Icon>
+                      </IconButton>
+                      </Link>
+                      </Grid>
+                  <Grid item xs={6}>   
+                  <IconButton className="cont_icon"  aria-label="add to shopping cart">
+                    <Icon onClick={()=>Delete(item.file.id)} className="icon_Delete">delete</Icon>
+                  </IconButton>
+                  </Grid>
                   </Grid>
  
     
@@ -117,3 +115,28 @@ const redirect=()=>{
 
 
 export default  Published;
+
+
+const useStyles = makeStyles({
+  table: {
+    minWidth: 700,
+  },
+  marginBottom: 20
+});
+const StyledTableCell = withStyles((theme) => ({
+  head: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
+  },
+  body: {
+    fontSize: 14,
+  },
+}))(TableCell);
+
+const StyledTableRow = withStyles((theme) => ({
+  root: {
+    '&:nth-of-type(odd)': {
+      backgroundColor: theme.palette.action.hover,
+    },
+  },
+}))(TableRow);

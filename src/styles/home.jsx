@@ -1,5 +1,5 @@
+//estilo de las terjetas de los productos
 import { makeStyles } from "@material-ui/core/styles";
-
 export const homeStyles = makeStyles({
 
     slider:{  
@@ -46,7 +46,4 @@ export const homeStyles = makeStyles({
         justifyContent: "center",
         alignItems: "center",
     },
-
-    
-    
 });

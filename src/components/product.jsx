@@ -1,16 +1,10 @@
+//estructura de cada tarjeta q contiene cada producto
 import '../styles/slide.css'
 import Icon from '@material-ui/core/Icon';
-import { Grid,Typography } from "@material-ui/core";
-import { useState,useEffect } from 'react';
+import { Grid} from "@material-ui/core";
 import {homeStyles} from '../styles/home'
 const Product =({tittle,img,price,description})=> {
-  const Home =homeStyles();
-
-
- 
- 
-  
-
+const Home =homeStyles();
   return (
     <div className="appp">
        

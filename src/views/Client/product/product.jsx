@@ -1,10 +1,10 @@
+//vista del producto seleccionado
 import { useState,useEffect } from 'react';
 import { Grid } from "@material-ui/core";
 import "../../../styles/product.css"
 import Details from './details'
 import Images from './images'
-const ProductId =(props)=> {
-    
+const ProductId =(props)=> {  
     const url =`http://localhost:5000/product/${props.match.params.id}`;
     const product = props.match.params.id
     const [info,setInfo]=useState([]);
@@ -21,12 +21,9 @@ const ProductId =(props)=> {
     useEffect(()=>{
       fetchApi()
     },[])
-
  console.log(index)
     return(
-     
-        <>
-        
+    <>
         <div>
        
   <Grid justifyContent="center" container >

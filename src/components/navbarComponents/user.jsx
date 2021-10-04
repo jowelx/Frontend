@@ -1,3 +1,4 @@
+//esto verifica si hay un usuario logeado
 import React from 'react'
 import {navbar} from '../../styles/navbar';
 import Icon from '@material-ui/core/Icon';

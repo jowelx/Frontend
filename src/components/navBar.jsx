@@ -1,3 +1,4 @@
+//barra de navegacion
 import '../styles/slide.css'
 import {navbar} from '../styles/navbar';
 import Icon from '@material-ui/core/Icon';

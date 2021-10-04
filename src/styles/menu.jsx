@@ -1,10 +1,10 @@
+//estilos del menu del admin
 import { makeStyles } from "@material-ui/core/styles";
 export const menu = makeStyles({
     marginBottom:{
         marginBottom:"10%"   
     },
     logo:{
-        
         position:"relative",
         top:"5%",
         marginLeft:"20%",

@@ -1,3 +1,4 @@
+//vista para publicar productos
 import { Button, Grid, ButtonGroup,TextField,InputLabel,MenuItem,IconButton,Icon } from "@material-ui/core";
 import { useState } from "react";
 import React from 'react';
@@ -21,8 +22,6 @@ const Publish= ({View})=>{
           "data":data,
           "portada":portada
         } 
-      
-
         )
        .then(response => { setRes(response.data)
      console.log(response.data)
@@ -45,12 +44,11 @@ const Publish= ({View})=>{
           description:"",
           amount:""
    } )
-    const maxNumber = 69;
-
+    const maxNumber = 1;
+  
     const onChange = (imageList, addUpdateIndex) => {
      
-     
-      setImages(imageList);
+     setImages(imageList);
     };
     const currencies = [
       {
@@ -75,7 +73,7 @@ const Publish= ({View})=>{
         <ImageUploading
           multiple
           value={images}
-          onChange={onChange}
+          onChange={ onChange}
           maxNumber={maxNumber}
           dataURLKey="path"
         >
@@ -88,7 +86,7 @@ const Publish= ({View})=>{
             isDragging,
             dragProps
           }) => (
-           
+          <>
            
             <div className="upload__image-wrapper">
                <Grid justifyContent="center" container>
@@ -129,24 +127,22 @@ const Publish= ({View})=>{
            value={data.model}
           onChange={handleChangeData('model')}  className="input"type="text" label="Modelo del producto"/>
           </Grid>              
-              <Grid item md={6}>
+          <Grid item md={6}>
           <TextField         
            value={data.price}
            onChange={handleChangeData('price')} 
            className="input"
            type="text" 
            label="Precio"/>
-          </Grid>               
-                     
-             <Grid item md={6}>
+          </Grid>                       
+          <Grid item md={6}>
           <TextField      
             value={data.year}
             onChange={handleChangeData('year')}  
             className="input"
             type="text" 
             label="Año"/>
-          </Grid> 
-         
+          </Grid>         
           <Grid item md={12}>
 
           <TextField 
@@ -166,73 +162,32 @@ const Publish= ({View})=>{
                  
            <Grid item md={6}>
              <Grid justifyContent="center" container>
-             <ImageList rowHeight={200} className="itemList" cols={10}>
+             <Grid item md={12}>
+           <div style={{height:"30vw",marginTop:"2vw"}}>
               {imageList.map((image, index) => (
 
-                index === 0 ?
-             [ setPortada(image.path),
-                <Grid item md={6}>
-                <div key={index} className="image-item portada">
+                             
+                
+                <div key={index} >
                 
                   <Grid  container>
-             
                     <Grid  item md={12}>
-                      <ImageListItem cols={10}>
-                      <div className="cont_img">
-                     
-                  <img src={image.path} alt="" width="100" />
-                  </div>
-                  </ImageListItem>
-                  </Grid>
-                  <Grid item md={12}> 
-                  <div className="cont_title_card">
-                  <p className="tittle_portada">portada del producto</p>
+                    <div className="cont_img">
+                  <img src={image.path} alt=""  />
                   </div>
                   </Grid>
                   <Grid justifyContent="center" item md={12}>
 
-                  <div className="image-item__btn-wrapper">
-                    
-                    <IconButton onClick={() => onImageUpdate(index)}><Icon className="icon" style={{color:"rgb(40,40,40)"}}>edit</Icon></IconButton>
-                    
-                    <IconButton onClick={() => onImageRemove(index)}><Icon className="icon" style={{color:"rgb(40,40,40)"} }>delete</Icon></IconButton>
-                  
-                  </div>
-                  </Grid>
-  
-                  </Grid>
-                  
-                </div>
-                </Grid>
-                ]:                
-                <Grid item md={6}>
-                <div key={index} className="image-item">
-                
-                  <Grid  container>
-                    <Grid  item md={12}>
-                      <ImageListItem cols={10}>
-                      <div className="cont_img">
-                  <img src={image.path} alt="" width="100" />
-                  </div>
-                  </ImageListItem>
-                  </Grid>
-                  <Grid justifyContent="center" item md={12}>
-
-                  <div className="image-item__btn-wrapper">
-                    
-                    <IconButton onClick={() => onImageUpdate(index)}><Icon className="icon" style={{color:"rgb(40,40,40)"}}>edit</Icon></IconButton>
-                    
-                    <IconButton onClick={() => onImageRemove(index)}><Icon className="icon" style={{color:"rgb(40,40,40)"} }>delete</Icon></IconButton>
-                  
-                  </div>
+            
                   </Grid>
                   </Grid>
                   
                 </div>
-                </Grid>
+               
               ))}
-              </ImageList>
-              
+             
+             </div>
+             </Grid>
               <ButtonGroup 
               variant="contained" 
               color="primary" 
@@ -245,21 +200,34 @@ const Publish= ({View})=>{
               variant="contained"
               color="primary"
               size="small"
-            
+              onClick={() => onImageUpdate(0)}
+              style={isDragging ? { color: "red" } : null}
+              disabled={images.length ===1 ?false: true }
+              >
+               cambiar imagen
+              </Button>
+              <Button 
+              variant="contained"
+              color="primary"
+              size="small"
+              onClick={() => onImageRemove(0)}
+              style={isDragging ? { color: "red" } : null}
+              disabled={images.length ===1 ?false: true }
+              >
+              borrar imagen
+              </Button>
+              <Button 
+              variant="contained"
+              color="primary"
+              size="small"
+              disabled={images.length ===1 ? true : false}
                 style={isDragging ? { color: "red" } : null}
                 onClick={onImageUpload}
-                {...dragProps}
+               
               >
                 Subir imagen
               </Button>
-              
-              <Button
-              variant="contained"
-              color="primary"
-              size="small"   
-              onClick={onImageRemoveAll}>
-                 Descartar imagenes
-                 </Button>
+
                  </ButtonGroup>
                  </Grid>
               </Grid>
@@ -270,12 +238,15 @@ const Publish= ({View})=>{
               size="large"   
                variant="contained"
               color="primary"
+             
                onClick={()=>enviar()}>
                  Publicar
                  </Button>
                  </div>
               </Grid>
             </div>
+<p>{images.length}</p>
+            </>
           )}
         </ImageUploading>
       </div>

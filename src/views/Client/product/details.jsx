@@ -1,6 +1,6 @@
+//detalles del producto
 import { useState,useEffect } from 'react';
 import {Button, Grid,Typography,IconButton,TextField,Divider, Icon } from "@material-ui/core";
-
 import clsx from 'clsx'
 import "../../../styles/product.css"
 

@@ -1,3 +1,4 @@
+//vista donde se controlan las vistas del administrador
 import React from 'react';
 import Menu from '../../../components/menu'
 import { useState} from 'react';

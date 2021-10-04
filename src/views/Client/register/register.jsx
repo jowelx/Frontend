@@ -1,8 +1,7 @@
+//vista de la vista de registro
 import { useState,useEffect } from 'react';
 import { Grid,Typography } from "@material-ui/core";
 import Form from './formulario'
-
-
 const Register =()=> {
     return(
         <>

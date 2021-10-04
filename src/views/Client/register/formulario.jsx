@@ -1,3 +1,4 @@
+//formulario de registro de usuario
 import { useState,useEffect } from 'react';
 import { Grid,TextField,InputLabel } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";

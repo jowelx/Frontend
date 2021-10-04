@@ -1,4 +1,4 @@
-
+//proveedor del context, variables, informacion que maneja el context
 import UserContext from './context'
 import { useState,useEffect,useMemo,useContext } from 'react';
 export const DataProvider =(props)=>{

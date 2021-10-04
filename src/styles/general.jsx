@@ -1,3 +1,4 @@
+//color de la aplicacion en general
 import { createTheme } from "@material-ui/core/styles";
 const theme = createTheme({
     palette: {
