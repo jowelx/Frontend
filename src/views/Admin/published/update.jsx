@@ -64,15 +64,9 @@ const enviar=()=>{
    setLoading(false)
    }
     })
-     
-  
-}
-    
+}  
       const maxNumber = 1;
-  
       const onChange = (imageList, addUpdateIndex) => {
-       
-       
         setImages(imageList);
       };
       const currencies = [
@@ -114,8 +108,7 @@ const enviar=()=>{
               onImageRemove,
               isDragging,         
             }) => (
-             <>
-             
+             <>    
               <div className="upload__image-wrapper">
                  <Grid justifyContent="center" container>
               <Grid item md={12}>
@@ -123,8 +116,7 @@ const enviar=()=>{
                    </Grid>
                 <Grid item md={6}>
                   <div className="cont_input">
-                  <Grid spacing={2} container>
-                  
+                  <Grid spacing={2} container>                
                     <Grid item md={12}>
             <TextField value={data.name_product} onChange={handleChangeData('name_product')} className="input"type="text" label="Nombre del producto"/>
             </Grid>
