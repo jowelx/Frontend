@@ -3,12 +3,8 @@ import { Button, Grid, ButtonGroup,TextField,InputLabel,MenuItem,IconButton,Icon
 import { useState ,useEffect} from "react";
 
 import CircularProgress from '@material-ui/core/CircularProgress';
-import {useForm} from 'react-hook-form'
-import ReactDOM from "react-dom";
 import ImageUploading from "react-images-uploading";
 import axios from 'axios'
-import ImageList from '@material-ui/core/ImageList';
-import ImageListItem from '@material-ui/core/ImageListItem';
 
 const Update =(props)=>{
     const url =`http://localhost:5000/product/${props.match.params.id}`;
@@ -51,7 +47,26 @@ const Update =(props)=>{
 
      
   
-
+const enviar=()=>{
+  
+    setLoading(true)
+      let url =`http://localhost:5000/upload/${props.match.params.id}`
+      axios.post(
+        url,
+        {"file":images,
+        "data":data,
+       
+      } 
+      )
+     .then(response => { setRes(response.data)
+   console.log(response.data)
+   if(response.data === "ok"){
+   setLoading(false)
+   }
+    })
+     
+  
+}
     
       const maxNumber = 1;
   
@@ -95,11 +110,9 @@ const Update =(props)=>{
             {({
               imageList,
               onImageUpload,
-          
               onImageUpdate,
               onImageRemove,
-              isDragging,
-            
+              isDragging,         
             }) => (
              <>
              
@@ -255,6 +268,7 @@ const Update =(props)=>{
                 size="large"   
                 variant="contained"
                 color="primary"
+                onClick={()=>enviar()}
                 >
                   Guardar
                    </Button>
