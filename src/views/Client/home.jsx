@@ -19,9 +19,7 @@ const Home =()=> {
     return(
         <>
            <Grid container >
-            <Grid item xs={12}>
-                <Navbar/>
-            </Grid>     
+            
             <Grid item xs={12}>
             <Grid container>
                 {items.map(item =>{                 
@@ -29,14 +27,13 @@ const Home =()=> {
                         <>
                         <Grid item xs={6} sm={4}md={3}>
                         <Link
-                     to={`/product/${item.file.id}`}
+                     to={`/product/${item.id}`}
                      >
                         <Product  
-                        tittle={item.file.product_name} 
-                        img={item.
-                            file.portada} 
-                        description={item.file.description_product}
-                        price={item.file.price} />
+                        tittle={item.product_name} 
+                        img={item.portada} 
+                        description={item.description_product}
+                        price={item.price} />
                          </Link>
                         </Grid> 
                   </>

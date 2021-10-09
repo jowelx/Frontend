@@ -3,15 +3,37 @@ import { useState,useEffect } from 'react';
 import {Button, Grid,Typography,IconButton,TextField,Divider, Icon } from "@material-ui/core";
 import clsx from 'clsx'
 import "../../../styles/product.css"
-
- const Details =({model,year,state,price,brand,name})=>{
-   
+import{ useUser} from '../../../context/dataProvider';
+import axios from 'axios'
+import { Redirect } from 'react-router';
+import{ Link} from "react-router-dom"
+ const Details =({id,model,year,state,price,brand,name,amount})=>{
+    const {user} = useUser()
     const [active,setActive]=useState(1)
     const [cantidad,setCantidad]=useState(1)
+    const [redirect,setRedirect]=useState(false)
+    const enviar=()=>{
+    
+        let url ="http://localhost:5000/cart"
+        axios.post(
+          url,
+          {"id":id,
+          "amount":cantidad,
+          "user":user
+        } 
+        )
+       .then(response => { 
+     console.log(response.data)
+     if(response.data === "ok"){
+ 
+     }
+      })
+       
+    }
     return(
 
 <div className="cont_info">
-
+{redirect ===true &&  <Redirect to="/login"/>}
   <Grid  justifyContent="center" container>
       
     <Grid  item xs={12}>
@@ -48,12 +70,12 @@ import "../../../styles/product.css"
   color:"white",
   justifyContent:"center"
   }} >
-    <Grid container>
+    <Grid justifyContent="center" alignItems="center" container>
       <Grid item xs={4} >
       <IconButton
-
+onClick={()=>cantidad === 0? setCantidad(0):setCantidad(cantidad - 1)}
 >
-    <Icon>remove</Icon>    
+    <Icon style={{color:"rgb(255,255,255)",fontSize:15}}>remove</Icon>    
 </IconButton>
       </Grid>
       <Grid item xs={4}>
@@ -61,9 +83,9 @@ import "../../../styles/product.css"
         </Grid>
         <Grid item xs={4}>
         <IconButton
-
+onClick={()=>cantidad=== amount ?setCantidad(amount):setCantidad(cantidad + 1)}
   >
-      <Icon>add</Icon>    
+      <Icon style={{color:"rgb(255,255,255)",fontSize:15}}>add</Icon>    
   </IconButton>
         </Grid>
 
@@ -134,12 +156,15 @@ import "../../../styles/product.css"
             letterSpacing:".1vw"
         }
     }
+    onClick={()=> user === ""?setRedirect(true):enviar()}
     >
      Comprar producto
     </Button>
     </div>
+    <p>{user}</p>
   </Grid>
   </Grid>
+
   </div>
     )}
     export default Details;

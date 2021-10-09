@@ -1,4 +1,4 @@
-//formulario de inicio de session
+import React from 'react'
 import { useState,useEffect } from 'react';
 import { Grid,TextField,InputLabel } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
@@ -12,27 +12,20 @@ import Button from '@material-ui/core/Button';
 import axios from 'axios'
 import {login} from '../../../styles/formulario'
 import { Redirect } from 'react-router';
-
-const Form =()=> {
-
-
-      const Login =login() 
+const Form =()=>{
+    const Login =login() 
         
      
     
-
+        const [acount,setAcount]=useState()
+        const [restore,setRestore]=useState()
         const [values, setValues] =useState({
-          user: '',
-          password: ''
+          email: '',
+          pass:''
+      
         });
       
-        const [pass , setPass]=useState({
-          password:""
-        })
-        const [user , setUser]=useState({
-          user:""
-        })
-        const[redirect,setRedirect]=useState()
+       
         const handleChange = (prop) => (event) => {
           setValues({ ...values, [prop]: event.target.value });
         };
@@ -45,44 +38,56 @@ const Form =()=> {
           event.preventDefault();
         };
         const enviar=()=>{
-          let url ="http://localhost:5000/login"
+          let url ="http://localhost:5000/verifyEmail"
           axios.post(url,values)
          .then(response => {
         
-        console.log(response)
-        setUser(response.data)
-        console.log(response.data.type)
-        setPass(response.data)
-        setRedirect(response.data.type)
+     setAcount(response.data)
+     console.log(response.data)
         })
          
       }
+      const restablecer=()=>{
+        let url ="http://localhost:5000/restore"
+        axios.post(url,values)
+       .then(response => {
+      
+    setRestore(response.data)
+   console.log(response.data)
+      })
+       
+    }
       const prevent =(e)=>{
       e.preventDefault()
       }
     return(
-      <div >
-        {redirect ==="succesClient"? <Redirect to="/"/> :pass ==="succesAdmin"&& <Redirect to="/dashboard"/>}
-        <Grid justifyContent="center"  container>
+<>
+<div >
+    {restore ==='ok' ?<Redirect to="/"/>:acount === 'ok'? 
+         <Grid justifyContent="center"  container>
+           
             <Grid item={12}>
             <div className={Login.cont_form}>
+
               <Grid container>
+            
+             
+
+
         <form onSubmit={()=>prevent()} autoComplete="on" >
+      <p>Recuperar contraseña</p>
             <Grid item={12}>
     
-        <TextField  color="secondary"error={pass==="user" &&true} id="standard-basic"className={Login.form} onChange={handleChange('user')}label={pass==="user"?"E-mail incorrecto" :"E-mail"} />
-        </Grid>
-        <Grid item={12}>
-        <FormControl >
-          <InputLabel color="secondary"  error={pass==="pass" &&true} htmlFor="standard-adornment-password">{pass==="pass"?"Contraseña incorrecta" :"Contraseña"}</InputLabel>
+            <FormControl >
+          <InputLabel color="secondary"   htmlFor="standard-adornment-password">Nueva contraseña</InputLabel>
           <Input 
-          error={pass==="pass" &&true}  
-          className={ Login.form}
+       
+            className={Login.form}
             id="standard-adornment-password"
             color="secondary"
             type={values.showPassword ? 'text' : 'password'}
             value={values.password}
-            onChange={handleChange('password')}
+            onChange={handleChange('pass')}
             endAdornment={
               <InputAdornment position="end">
                 <IconButton
@@ -96,42 +101,61 @@ const Form =()=> {
             }
           />
         </FormControl>
-        </Grid>
+           </Grid>
+        
 <Grid item={12}>
-<Button variant="contained" onClick={()=>enviar()} className={Login.button}color="primary">
-        Iniciar sesión
+<Button variant="contained" onClick={()=>restablecer()} className={Login.button}color="primary">
+       Restablecer
       </Button>
    
-        <Grid item={12}><a href="/register" style={
-          {
-            fontSize:"65%",
-            color:"rgb(120,120,120)",
-            marginBottom:"-10%",
-      }}>
-        ¿No tienes cuenta? Crea una
-        </a>
-      </Grid>
-      <Grid item={12}><a href="/forgotPassword" style={
-          {
-            fontSize:"65%",
-            color:"rgb(120,120,120)",
-            marginBottom:"-10%",
-      }}>
-        Restablecer contraseña
-        </a>
-      </Grid>
+      
       
 </Grid>
+
      </form>
+    
      </Grid>
      </div>
         </Grid>
         </Grid>
-        </div>
+        :
+        <Grid justifyContent="center"  container>
+           
+        <Grid item={12}>
+        <div className={Login.cont_form}>
+
+          <Grid container>
+        
+         
+
+
+    <form onSubmit={()=>prevent()} autoComplete="on" >
+  <p>Recuperar contraseña</p>
+        <Grid item={12}>
+
+    <TextField  color="secondary"error={acount==="undefined" &&true} id="standard-basic"className={Login.form} onChange={handleChange('email')}label={acount==="undefined"?" E-mail inválido" :"Ingrese su E-mail"} />
+    </Grid>
     
-    )
-   
+<Grid item={12}>
+<Button variant="contained" onClick={()=>enviar()} className={Login.button}color="primary">
+    Verificar
+  </Button>
+
+  
+  
+</Grid>
+
+ </form>
+
+ </Grid>
+ </div>
+    </Grid>
+    </Grid>
+
 }
+        </div>
+</>
 
-
-export default Form;
+    )
+}
+export default Form

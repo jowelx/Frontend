@@ -2,8 +2,8 @@
 import UserContext from './context'
 import { useState,useEffect,useMemo,useContext } from 'react';
 export const DataProvider =(props)=>{
+   const route = 'http://localhost:5000'
     const url ='http://localhost:5000/user';
-    
     const [user,setUser]=useState([]);
     const fetchApi = async() =>{
       const response = await fetch(url);
@@ -15,13 +15,11 @@ export const DataProvider =(props)=>{
     useEffect(()=>{
       fetchApi()
     },[])
-    const value = useMemo(()=>{
+    const valueUser = useMemo(()=>{
       return({user})
     },[user])
-    return <UserContext.Provider value={value} {...props}/>
+    return <UserContext.Provider value={valueUser} {...props}/>
 
-       
-    
 }
 export function useUser(){
 const context = useContext(UserContext)

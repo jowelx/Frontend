@@ -3,14 +3,26 @@ import React from 'react'
 import {navbar} from '../../styles/navbar';
 import Icon from '@material-ui/core/Icon';
 import Button from '@material-ui/core/Button';
-import{ useUser} from '../../context/dataProvider';
-const UserLoged = ({state })=>{
+import{ Link} from "react-router-dom"
+
+const UserLoged = ({user })=>{
     const NavBar = navbar()
-    const {user} = useUser()
+  
     console.log("usuario "+user)
 return(
     <>
-    {user !== "" ? <p  className={NavBar.button}>{user}</p> :
+    {user !== "" ? 
+    <Link
+    to={'/user'}
+    >
+    <p  
+    className={NavBar.button}>{user}
+    </p> 
+    </Link>
+    :
+<Link
+ to={`/login`}
+>
   <Button
     className={NavBar.button}
     variant="outlined"
@@ -20,6 +32,7 @@ return(
   >
           Acceder
   </Button>
+  </Link>
     } 
     </>
 )

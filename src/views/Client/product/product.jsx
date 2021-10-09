@@ -4,7 +4,10 @@ import { Grid } from "@material-ui/core";
 import "../../../styles/product.css"
 import Details from './details'
 import Images from './images'
+import Comments from '../../../components/coments'
+import{ useUser} from '../../../context/dataProvider';
 const ProductId =(props)=> {  
+    const {user} = useUser()
     const url =`http://localhost:5000/product/${props.match.params.id}`;
     const product = props.match.params.id
     const [info,setInfo]=useState([]);
@@ -24,6 +27,8 @@ const ProductId =(props)=> {
  console.log(index)
     return(
     <>
+    {info.length >0 &&
+    <>
         <div>
        
   <Grid justifyContent="center" container >
@@ -31,29 +36,35 @@ const ProductId =(props)=> {
   <div className="cont_Product">
 <Grid direction="row" container>
 <Grid item xs={4}>
-{info.length >0 &&
+
 <Details
+id={info[0].id}
  name={info[0].product_name}
  model={info[0].model}
  year={info[0].year}
  state={info[0].state}
  price={info[0].price}
  brand={info[0].brand}
+ amount={info[0].amount}
  />
-}
+
 </Grid>
 <Grid item xs={8}>
-{images.length >0 &&
+
  <Images
- images={images}
+ images={info[0].portada}
  />
+
+</Grid>
+</Grid>
+</div>
+</Grid>
+</Grid>
+</div>
+< Comments id={info[0].id}user={user}/>
+</>
 }
-</Grid>
-</Grid>
-</div>
-</Grid>
-</Grid>
-</div>
+
 
         </>
     )

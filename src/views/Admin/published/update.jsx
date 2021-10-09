@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Grid, ButtonGroup,TextField,InputLabel,MenuItem,IconButton,Icon } from "@material-ui/core";
 import { useState ,useEffect} from "react";
-
+import { Redirect } from 'react-router';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import ImageUploading from "react-images-uploading";
 import axios from 'axios'
@@ -50,7 +50,7 @@ const Update =(props)=>{
 const enviar=()=>{
   
     setLoading(true)
-      let url =`http://localhost:5000/upload/${props.match.params.id}`
+      let url =`http://localhost:5000/update/${props.match.params.id}`
       axios.post(
         url,
         {"file":images,
@@ -85,12 +85,14 @@ const enviar=()=>{
 
       return (
           <>
+            
         {info.length> 0 &&
         
           <>
-          {loading=== true ? <div className="cargando"><CircularProgress color="primary" /><p>Publicando</p></div>:res==="ok" }
+          {loading=== true ? <div className="cargando"><CircularProgress color="primary" /><p>Guardando</p></div>:res==="ok"&&<Redirect to="/dashboard"/> }
         
           <Grid justifyContent="center" container>
+     
              <Grid item xs={8}>
         <div className="App">
         
@@ -112,7 +114,7 @@ const enviar=()=>{
               <div className="upload__image-wrapper">
                  <Grid justifyContent="center" container>
               <Grid item md={12}>
-                <p className="tittle">Publicar producto</p>
+                <p className="tittle">Editar producto</p>
                    </Grid>
                 <Grid item md={6}>
                   <div className="cont_input">

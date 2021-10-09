@@ -16,7 +16,8 @@ const [view,setView]=useState(0)
             </Grid>
             <Grid item md={12}>
             {view ===1 && <Publish View={setView}/>}
-            {view ===2 && <Published/>}
+            {view ===2 && <Published />}
+            
             </Grid>
             </Grid>
         </div>

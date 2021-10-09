@@ -3,12 +3,8 @@ import { Button, Grid, ButtonGroup,TextField,InputLabel,MenuItem,IconButton,Icon
 import { useState } from "react";
 import React from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import {useForm} from 'react-hook-form'
-import ReactDOM from "react-dom";
 import ImageUploading from "react-images-uploading";
 import axios from 'axios'
-import ImageList from '@material-ui/core/ImageList';
-import ImageListItem from '@material-ui/core/ImageListItem';
 import "./styles.css";
 const Publish= ({View})=>{
   const [loading,setLoading] = useState()
@@ -35,14 +31,14 @@ const Publish= ({View})=>{
    
     const [images, setImages] = React.useState([]);
     const [data,setData]=useState({
-          name_product:"",
-          brand:"",
-          state:"",
-          model:"",
-          price:"",
-          year:"",
-          description:"",
-          amount:""
+      name_product:"",
+      brand:"",
+      state:"",
+      model:"",
+      price:"",
+      year:"",
+      description:"",
+      amount:""
    } )
     const maxNumber = 1;
   
@@ -104,14 +100,14 @@ const Publish= ({View})=>{
           <TextField value={data.brand} onChange={handleChangeData('brand')} className="input"type="text" label="Marca"/>
           </Grid> 
           <Grid item md={12}>
-          <TextField value={data.brand} onChange={handleChangeData('amount')} className="input"type="text" label="Cantidad"/>
-          </Grid>                   
+          <TextField value={data.amount} onChange={handleChangeData('amount')} className="input"type="text" label="Cantidad"/>
+           </Grid>                   
           <Grid item md={12}>
           <TextField 
           style={{textAlign:"left"}} 
           value={data.state}
           onChange={handleChangeData('state')} 
-          select 
+          select
           id="standard-select-currency" 
           className="input"
           type="text" 

@@ -50,8 +50,8 @@
 }
 .cont_Product{
     width: 100%;
-    margin-top: 5%;
-    box-shadow: 0vw .1vw .4vw .1vw rgb(128, 128, 128);
+
+    box-shadow: 0vw .2vw .2vw 0vw rgb(140, 140, 140);
     border-radius: .8vw; 
 }
 .cont_img_product{

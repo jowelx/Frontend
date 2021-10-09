@@ -66,15 +66,15 @@ const Form =()=> {
         <Grid container spacing={3}justifyContent="center">
         <Grid item md={6}>
     
-    <TextField  color="secondary"error={res==="name" ?true:false} id="standard-basic"className={Register.form}value={values.name} onChange={handleChange('name')}label="Nombre" />
+    <TextField  color="secondary"error={res==="name" ?true:false} id="standard-basic"className={Register.form}value={values.name} onChange={handleChange('name')}label={res==="name"?"Este nombre ya esta en uso":"Nombre"} />
     </Grid>
             <Grid item md={6}>
     
-        <TextField  color="secondary"error={res==="user" ?true:false} id="standard-basic"className={Register.form}value={values.user} onChange={handleChange('user')}label="Usuario" />
+        <TextField  color="secondary"error={res==="user" ?true:false} id="standard-basic"className={Register.form}value={values.user} onChange={handleChange('user')}label={res==="user"?"Este usuario ya existe":"Usuario"} />
         </Grid>
         <Grid item md={12}>
     
-    <TextField  color="secondary"error={res==="correo" ?true:false} id="standard-basic"className={Register.form} value={values.mail} onChange={handleChange('mail')}label="E-Mail" />
+    <TextField  color="secondary"error={res==="correo" ?true:false} id="standard-basic"className={Register.form} value={values.mail} onChange={handleChange('mail')}label={res==="correo" ?"Este correo ya esta en uso":"E-Mail"} />
     </Grid>
         <Grid item md={12}>
         <FormControl   className={ Register.form}>

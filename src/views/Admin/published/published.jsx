@@ -69,22 +69,22 @@ const redirect=()=>{
               <StyledTableCell component="th" scope="row">
                 {index}
               </StyledTableCell>
-              <StyledTableCell align="center"> {item.file.product_name}</StyledTableCell>
+              <StyledTableCell align="center"> {item.product_name}</StyledTableCell>
             
-              <StyledTableCell align="center">{item.file.price}</StyledTableCell>
-              <StyledTableCell align="center">{item.file.brand}</StyledTableCell>
-              <StyledTableCell align="center">{item.file.amount}</StyledTableCell>
-              <StyledTableCell align="center">{item.file.model}</StyledTableCell>
+              <StyledTableCell align="center">{item.price}</StyledTableCell>
+              <StyledTableCell align="center">{item.brand}</StyledTableCell>
+              <StyledTableCell align="center">{item.amount}</StyledTableCell>
+              <StyledTableCell align="center">{item.model}</StyledTableCell>
         
-              <StyledTableCell align="center">{item.file.year}</StyledTableCell>
-              <StyledTableCell align="center"><img style={{maxWidth:80}}src={item.file.portada}/></StyledTableCell>
+              <StyledTableCell align="center">{item.year}</StyledTableCell>
+              <StyledTableCell align="center"><img style={{maxWidth:80}}src={item.portada}/></StyledTableCell>
        
-              <StyledTableCell align="center">{item.file.state}</StyledTableCell>
+              <StyledTableCell align="center">{item.state}</StyledTableCell>
               <StyledTableCell align="center">
                   <Grid container spacing={1}>
                       <Grid item xs={6}> 
                       <Link
-                     to={`/Update/${item.file.id}`}
+                     to={`/Update/${item.id}`}
                      >            
                       <IconButton  className="cont_icon"  aria-label="add to shopping cart">
                            <Icon className="icon_Edit">search</Icon>
@@ -93,7 +93,7 @@ const redirect=()=>{
                       </Grid>
                   <Grid item xs={6}>   
                   <IconButton className="cont_icon"  aria-label="add to shopping cart">
-                    <Icon onClick={()=>Delete(item.file.id)} className="icon_Delete">delete</Icon>
+                    <Icon onClick={()=>Delete(item.id)} className="icon_Delete">delete</Icon>
                   </IconButton>
                   </Grid>
                   </Grid>
