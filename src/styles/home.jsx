@@ -2,15 +2,7 @@
 import { makeStyles } from "@material-ui/core/styles";
 export const homeStyles = makeStyles({
 
-    slider:{  
-        position:" relative",
-        width: "100%",
-        height:"100%",
-        marginBottom:"20%",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-    },
+
     items:{
         marginTop:"2%",
         

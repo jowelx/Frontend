@@ -1,18 +1,20 @@
-import React from 'react'
+import React from 'react' 
 import { Grid,TextField,IconButton,Icon} from "@material-ui/core";
 import {useState,useEffect}from'react'
 import CircularProgress from '@material-ui/core/CircularProgress';
 import axios from 'axios'
-import InputRes from './response/inputRes'
-import Response from './response/response'
-import {CommentStyles} from '../styles/comment' 
+
+import InputRes from '../../../../components/response/inputRes'
+import Response from '../../../../components/response/response'
+import {CommentStyles} from '../../../../styles/comment' 
 import clsx from 'clsx'
-const Comments =({id,user})=>{
-  const [indice,setIndice]=useState()
+const PanelComment=({id,user,coments})=>{
+    const [indice,setIndice]=useState()
     const coment = CommentStyles()
     const [loading,setLoading] = useState()
     const [res, setRes]=useState();
-    const [data,setData]=useState([])
+
+    const [data,setData]=useState([coments])
     const [answer,setAnswer]=useState([])
     const [comment,setCommment]=useState({
         user:user,
@@ -22,13 +24,6 @@ const Comments =({id,user})=>{
     const handleChangeData = (prop) => (event) => {
         setCommment({ ...comment, [prop]: event.target.value });
       };
-      const fetchApi = async() =>{
-        let url =`http://localhost:5000/comments/${id}`
-        const response = await fetch(url);
-        const responseJSON = await response.json();
-        setData(responseJSON)
-         console.log(responseJSON)
-        }
       const enviar=()=>{
         setLoading(true)
           let url ="http://localhost:5000/comments"
@@ -50,19 +45,18 @@ const Comments =({id,user})=>{
         )
          
       }
-      useEffect(()=>{
-        fetchApi()
-      },[res])
-    return(
-        <>
+  
+return(
+    
+    <>
          {loading=== true && <div className="cargando"><CircularProgress color="primary" /><p>Publicando</p></div>}
       
         <Grid justifyContent="center" container>
-<Grid item xs={8}>
-<div className={coment.cont_Comments}>
+<Grid item xs={12}>
+<div  className={coment.cont_CommentsAdmin}>
   <p className={coment.title}>Comentarios</p>
   <Grid justifyContent="center" container>
-{data.map((item,index)=>{
+{coments.map((item,index)=>{
     return(
         <>
         <Grid item xs={10}>
@@ -73,7 +67,7 @@ const Comments =({id,user})=>{
         <p style={{width:"100%"}} className={coment.user}>{item.coment.user}</p>
         </Grid>
         <Grid item xs={12}>
-        <p className={coment.comment}>{item.coment.comment}</p>
+        <p  className={coment.comment}>{item.coment.comment}</p>
         </Grid>
         <Grid item xs={12}>
           <div onClick={()=>setIndice(index)} style={{position:"relative",marginLeft:"1.5vw",marginTop:".5vw"}}>
@@ -128,6 +122,8 @@ const Comments =({id,user})=>{
         </Grid>
        
         </>
-    )
+   
+
+)
 }
-export default Comments;
+export default PanelComment

@@ -14,7 +14,10 @@ export const menu = makeStyles({
     },
     bar:{
         background: "linear-gradient(rgb(40, 40, 45),rgb(30, 30, 35));",
-        marginBottom:"2%" 
+        marginBottom:"2%" ,
+        position:"fixed",
+        zIndex:"99",
+        width:"100%"
     },
     cont:{
         backgroundColor:"rgb(40,40,40)",
@@ -56,9 +59,16 @@ export const menu = makeStyles({
      active5:{
         WebkitBackgroundClip:"Text",
         WebkitTextFillColor:"transparent",
+        background: "linear-gradient(rgb(2, 240, 250),rgb(10,160, 200));",
+
+    },
+    active6:{
+        WebkitBackgroundClip:"Text",
+        WebkitTextFillColor:"transparent",
         background: "linear-gradient(rgb(2, 200, 250),rgb(10,140, 210));",
 
-    },item:{
+    }
+    ,item:{
         color:"rgb(250,250,250)",
     },
     cont_item:{

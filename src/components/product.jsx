@@ -3,7 +3,8 @@ import '../styles/slide.css'
 import Icon from '@material-ui/core/Icon';
 import { Grid} from "@material-ui/core";
 import {homeStyles} from '../styles/home'
-const Product =({tittle,img,price,description})=> {
+import{ Link} from "react-router-dom"
+const Product =({id,tittle,img,price,description})=> {
 const Home =homeStyles();
   return (
     <div className="appp">
@@ -13,6 +14,9 @@ const Home =homeStyles();
     
       <div className={Home.slider}>
         <div className="container">
+        <Link
+                     to={`/product/${id}`}
+                     >
       <Grid container spacing={0}>
 
       <div className="items">
@@ -49,6 +53,7 @@ const Home =homeStyles();
         </div>
       </Grid>
 </Grid>
+</Link>
 </div>
 </div>
      

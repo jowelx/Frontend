@@ -1,6 +1,7 @@
 //menu lateral del amdministrador
 import React from 'react';
 import clsx from 'clsx';
+import Badge from '@material-ui/core/Badge';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import { useState,useEffect } from 'react';
@@ -21,7 +22,7 @@ const useStyles = makeStyles({
   },
 });
 
-const Menu= ({View,Views}) =>{
+const Menu= ({View,Views,comments}) =>{
   const Menu = menu();
   const classes = useStyles();
   const [menu_item,setMenu_item]=useState(0);
@@ -58,7 +59,11 @@ if(Views!==menu_item){
      
       <List>
       <Divider className={Menu.item_div} />
-        {['Resumen', 'Publicar','Publicados', 'Comentarios', 'Ventas','pendientes'].map((text, index) => (
+        {['Resumen',
+         'Publicar',
+         'Publicados',
+         'Comentarios',
+         'Ventas','pendientes','Novedades'].map((text, index) => (
           <>
           <ListItem className={
             menu_item === index ?
@@ -69,16 +74,23 @@ if(Views!==menu_item){
               menu_item === index ?
                menu_item === 0 ? Menu.active0 :
                menu_item === 1 ? Menu.active1 :
-                menu_item === 2 ? Menu.active2: 
-                menu_item === 3 ? Menu.active3:
+                menu_item === 2 ? Menu.active2:  
                 menu_item === 4 ? Menu.active4: 
-                menu_item === 5 && Menu.active5:
+                menu_item === 5 ? Menu.active5:
+                menu_item === 6 && Menu.active6:
                 Menu.item}>{index  === 0 ? <Icon>poll</Icon> : 
                 index  ===1 ? <Icon>calendar_today</Icon>:
                 index  ===2? <Icon>done_all</Icon>:
-                index===3 ?<Icon>forum</Icon>: 
+                index   ===3 ?  
+                 <> 
+              <Badge badgeContent={comments} color="secondary">
+                <Icon className={ menu_item === 3 ? Menu.active3: Menu.item}>forum</Icon>
+              </Badge>
+              </>: 
                 index  === 4 ? <Icon>paid</Icon>:
-                index  === 5 && <Icon>timer</Icon>}
+                index  === 5 ? <Icon>timer</Icon>:
+                index  === 6 && <Icon>card_giftcard</Icon>
+                }
                 </ListItemIcon>
             <ListItemText className={Menu.item} primary={text} />
           </ListItem>

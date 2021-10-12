@@ -40,7 +40,6 @@
  
   }
   .cont_img >img{
-    resize: both;
     max-width: 20vw;
     max-height: 100%;
     height: auto;
@@ -81,7 +80,7 @@
 
   }
   .cont_icon{
-    box-shadow: 0 .1vw  .1vw .1vw rgb(189, 189, 189);
+    box-shadow: 0vw .2vw .2vw .1vw rgb(200, 200, 200);
     border-radius: 2vw;
     width: 3vw;
     height: 3vw;

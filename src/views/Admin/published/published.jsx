@@ -44,6 +44,7 @@ const redirect=()=>{
 }
     return(
         <>
+        <div style={{marginTop:"4vw"}}>
 <Grid justifyContent="center" container>
     <Grid item xs={10}>
         <TableContainer component={Paper}>
@@ -109,6 +110,7 @@ const redirect=()=>{
    
     </Grid>
 </Grid>
+</div>
     </>
   );
 }

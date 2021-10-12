@@ -18,7 +18,7 @@ export const navbar = makeStyles({
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-      marginBottom:"5%",
+     
   },search_icon:{
       color:"rgb(20,20,30)",
       fontSize:"160%",
@@ -33,8 +33,11 @@ export const navbar = makeStyles({
       borderRadius:"0 .2vw .2vw 0vw"
     },
     iconsWhite:{
-      color:"rgb(255,255,255)",
-      marginTop:"20%"
+      WebkitBackgroundClip:"Text",
+      WebkitTextFillColor:"transparent",
+      background: "linear-gradient(360deg, rgba(80,80,80,1) 0%, rgba(255,255,255,1) 35%, rgba(230,230,230,1) 100%);",
+      marginTop:"20%",
+      fontSize:25
     },
     iconsDark:{
       color:"rgb(255,200,70)",

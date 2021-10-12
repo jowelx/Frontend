@@ -65,7 +65,8 @@ const Publish= ({View})=>{
         <Grid justifyContent="center" container>
            <Grid item xs={8}>
       <div className="App">
-      
+      {//CHE PUTO
+      }
         <ImageUploading
           multiple
           value={images}

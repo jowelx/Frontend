@@ -13,7 +13,7 @@ const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 
 
-const Modify=()=> {
+const Slider=()=> {
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
 
@@ -66,7 +66,7 @@ const Modify=()=> {
                   overflow: 'hidden',
                   width: 'auto',
                   height: "auto",
-                  maxHeight: "20vw",
+                  maxHeight: "50vw",
                 }}
                 src={step.url}
                
@@ -100,4 +100,4 @@ const Modify=()=> {
   );
 }
 
-export default Modify;
+export default Slider;
