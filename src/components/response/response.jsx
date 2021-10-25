@@ -19,7 +19,7 @@ const Response =({user,coments})=>{
         </Grid>
         <Grid item xs={12}>
           <div  style={{position:"relative",marginLeft:"1.5vw",marginTop:".5vw"}}>
-          <Icon style={{fontSize:20,marginTop:"-.4vw",color:"rgb(120,120,120)",position:"absolute"}}>reply</Icon>
+          <Icon  className={coment.iconReply} style={{fontSize:20,marginTop:"-.4vw",position:"absolute"}}>reply</Icon>
         <p style={{fontSize:10,color:"rgb(120,120,120)",marginTop:"-1.5vw",paddingBottom:"1vw",marginLeft:"1.5vw"}}>Responder</p>
         </div>
         </Grid>

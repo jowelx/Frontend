@@ -20,6 +20,7 @@ export const menu = makeStyles({
         width:"100%"
     },
     cont:{
+        
         backgroundColor:"rgb(40,40,40)",
         height:"100%",
         background: "linear-gradient(rgb(25, 25, 32),rgb(10, 10, 12));"

@@ -1,13 +1,13 @@
 //detalles del producto
-import { useState,useEffect } from 'react';
-import {Button, Grid,Typography,IconButton,TextField,Divider, Icon } from "@material-ui/core";
+import { useState } from 'react';
+import {Button, Grid,IconButton,Divider, Icon } from "@material-ui/core";
 import clsx from 'clsx'
 import "../../../styles/product.css"
 import{ useUser} from '../../../context/dataProvider';
 import axios from 'axios'
 import { Redirect } from 'react-router';
 import{ Link} from "react-router-dom"
- const Details =({id,model,year,state,price,brand,name,amount})=>{
+ const Details =({id,model,year,state,price,brand,name,amount,category,description})=>{
     const {user} = useUser()
     const [active,setActive]=useState(1)
     const [cantidad,setCantidad]=useState(1)
@@ -95,7 +95,7 @@ onClick={()=>cantidad=== amount ?setCantidad(amount):setCantidad(cantidad + 1)}
   </Grid> 
   <Grid item xs={12}>
   <p className={clsx("description_product","p")}>
-  Lorem Ipsum es simplemente el texto de relleno de las imprentas y archLorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas "Letraset", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.
+  {description}
     </p>   
   </Grid>
   </>
@@ -134,6 +134,12 @@ onClick={()=>cantidad=== amount ?setCantidad(amount):setCantidad(cantidad + 1)}
   <p className="p">{price}</p>
   </div>
   </Grid>
+  <Grid  item xs={6}>
+  <div className="textLeft">
+  <p className={clsx("margin_top","p2")}>Categoria</p>
+  <p className="p">{category}</p>
+  </div>
+  </Grid>
   <Grid   item xs={6}>
   <div className="textLeft">
   <p className={clsx("margin_top","p2")}></p>
@@ -153,7 +159,7 @@ onClick={()=>cantidad=== amount ?setCantidad(amount):setCantidad(cantidad + 1)}
             padding:"4% 5%",
             borderRadius:"10vw",
             fontSize:"70%",
-            letterSpacing:".1vw"
+       
         }
     }
     onClick={()=> user === ""?setRedirect(true):enviar()}
@@ -161,7 +167,7 @@ onClick={()=>cantidad=== amount ?setCantidad(amount):setCantidad(cantidad + 1)}
      Comprar producto
     </Button>
     </div>
-    <p>{user}</p>
+ 
   </Grid>
   </Grid>
 

@@ -4,7 +4,7 @@ export const homeStyles = makeStyles({
 
 
     items:{
-        marginTop:"2%",
+        
         
         width: "100%",
         height: "18vw",
@@ -12,22 +12,22 @@ export const homeStyles = makeStyles({
         justifyContent: "center",
         alignItems: "center",
         position: "relative",
-        overflow:"hidden",
-        borderBottom:"solid .1vw"
+      
+        borderBottom:"solid .1vw",
+       
     },
     itemsImg:{
         maxHeight:"14vw",
-        maxWidth:"14vw",
+        maxWidth:"100%",
         width:"auto",
         height:"auto",
-        boxSizing:"content-box",
-        display:"block",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        
     },
     tittle_product:{
-       
+        fontFamily: "'Zen Kurenaido', sans-serif",
         textAlign:"left",
         marginLeft:"8%",
         position:"relative",

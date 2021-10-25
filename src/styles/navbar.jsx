@@ -7,12 +7,30 @@ export const navbar = makeStyles({
       top:"5%",
       margin:"2%",
       width:"30%",
-  },input:{
-    marginTop:"1.45%",
-      width:"100%",
-     border:0,
-     outline:" none",
-      height:"60%"
+      ['@media  (min-width:300px)and (max-width:600px)']: { // eslint-disable-line no-useless-computed-key
+        width: '80%',
+        marginTop:"5vw"
+      },
+  },cont:{
+     
+     width:"100%",
+ 
+     
+     ['@media  (min-width:300px)and (max-width:600px)']: { // eslint-disable-line no-useless-computed-key
+      width:"95%",
+      fontSize:"1.4vw",
+    },
+  
+  } , disabled:{
+    ['@media  (min-width:300px)and (max-width:600px)']: { // eslint-disable-line no-useless-computed-key
+      display:"none"
+    }, 
+
+  },enable:{
+display :"none",
+    ['@media  (min-width:300px)and (max-width:600px)']: { // eslint-disable-line no-useless-computed-key
+      display:"block"
+    }, 
   },cont_Nav:{
       backgroundColor:"rgb(20,20,30)",
       display: "flex",
@@ -20,23 +38,25 @@ export const navbar = makeStyles({
       alignItems: "center",
      
   },search_icon:{
-      color:"rgb(20,20,30)",
-      fontSize:"160%",
-      marginTop:"7%",
-      backgroundColor:"rgb(255,200,80)",
-      width:"50%",
+      color:"rgb(100,100,100)",
+      fontSize:"1.4vw",
+      padding:".5vw 0vw",
+      backgroundColor:"rgb(255,255,255)",
+      width:"40%",
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-      height:"65%",
       cursor:"pointer",
-      borderRadius:"0 .2vw .2vw 0vw"
+      borderLeft:"solid .1vw rgb(200,200,200)",
+      borderRadius:"0 .1vw .1vw 0vw",
+      ['@media  (min-width:300px)and (max-width:600px)']: { // eslint-disable-line no-useless-computed-key
+        fontSize:"4vw",
+      },
     },
     iconsWhite:{
-      WebkitBackgroundClip:"Text",
-      WebkitTextFillColor:"transparent",
-      background: "linear-gradient(360deg, rgba(80,80,80,1) 0%, rgba(255,255,255,1) 35%, rgba(230,230,230,1) 100%);",
-      marginTop:"20%",
+  
+      color:"rgb(250,250,250)",
+       marginTop:"20%",
       fontSize:25
     },
     iconsDark:{
@@ -68,7 +88,10 @@ export const navbar = makeStyles({
       marginTop:"5%",
       marginLeft:"40%",
       marginBottom: "8%",
-      cursor:"pointer"
+      cursor:"pointer",
+      ['@media  (min-width:300px)and (max-width:600px)']: { // eslint-disable-line no-useless-computed-key
+        display:"none"
+      },
     } ,
     true:{
       backgroundColor: "rgb(2,255,20)"

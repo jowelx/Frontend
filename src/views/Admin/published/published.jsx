@@ -60,6 +60,7 @@ const redirect=()=>{
             <StyledTableCell align="center">Año</StyledTableCell>
             <StyledTableCell align="center">Portada</StyledTableCell>
             <StyledTableCell align="center">Estado</StyledTableCell>
+            <StyledTableCell align="center">Categoria</StyledTableCell>
             <StyledTableCell align="center">Herramientas</StyledTableCell>
       
           </TableRow>
@@ -81,6 +82,8 @@ const redirect=()=>{
               <StyledTableCell align="center"><img style={{maxWidth:80}}src={item.portada}/></StyledTableCell>
        
               <StyledTableCell align="center">{item.state}</StyledTableCell>
+              <StyledTableCell align="center">{item.category}</StyledTableCell>
+            
               <StyledTableCell align="center">
                   <Grid container spacing={1}>
                       <Grid item xs={6}> 

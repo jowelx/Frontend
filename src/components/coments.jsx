@@ -1,28 +1,30 @@
-import React from 'react'
+import React from 'react';
 import { Grid,TextField,IconButton,Icon} from "@material-ui/core";
-import {useState,useEffect}from'react'
+import {useState,useEffect}from'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import axios from 'axios'
-import InputRes from './response/inputRes'
-import Response from './response/response'
-import {CommentStyles} from '../styles/comment' 
-import clsx from 'clsx'
+import axios from 'axios';
+import InputRes from './response/inputRes';
+import Response from './response/response';
+import {CommentStyles} from '../styles/comment';
+import {useUser} from '../context/dataProvider'
 const Comments =({id,user})=>{
-  const [indice,setIndice]=useState()
-    const coment = CommentStyles()
-    const [loading,setLoading] = useState()
+  const {setADMcomments}=useUser();
+  const [indice,setIndice]=useState();
+    const coment = CommentStyles();
+    const [loading,setLoading] = useState();
     const [res, setRes]=useState();
-    const [data,setData]=useState([])
-    const [answer,setAnswer]=useState([])
+    const [data,setData]=useState([]);
+    const [answer,setAnswer]=useState([]);
     const [comment,setCommment]=useState({
         user:user,
         id_product:id,
         comments:""
-    })
+    });
     const handleChangeData = (prop) => (event) => {
         setCommment({ ...comment, [prop]: event.target.value });
       };
       const fetchApi = async() =>{
+        setRes("")
         let url =`http://localhost:5000/comments/${id}`
         const response = await fetch(url);
         const responseJSON = await response.json();
@@ -31,6 +33,7 @@ const Comments =({id,user})=>{
         }
       const enviar=()=>{
         setLoading(true)
+      
           let url ="http://localhost:5000/comments"
           axios.post(
             url,
@@ -41,14 +44,15 @@ const Comments =({id,user})=>{
           )
          .then(response => { 
        console.log(response)
-       setRes(response.data)
+       
        if(response.data === "ok"){
+        setRes(response.data)
+        setCommment({ ...comment, comments: "" });
+        setADMcomments(comment.comments);
         setLoading(false)
+         }
         }
-    
-       }
-        )
-         
+       )
       }
       useEffect(()=>{
         fetchApi()
@@ -77,7 +81,7 @@ const Comments =({id,user})=>{
         </Grid>
         <Grid item xs={12}>
           <div onClick={()=>setIndice(index)} style={{position:"relative",marginLeft:"1.5vw",marginTop:".5vw"}}>
-          <Icon style={{fontSize:20,marginTop:"-.4vw",color:"rgb(120,120,120)",position:"absolute"}}>reply</Icon>
+          <Icon  className={coment.iconReply} style={{fontSize:20,marginTop:"-.4vw",position:"absolute"}}>reply</Icon>
         <p style={{fontSize:10,color:"rgb(120,120,120)",marginTop:"-1.5vw",paddingBottom:"1vw",marginLeft:"1.5vw"}}>Responder</p>
         </div>
         </Grid>

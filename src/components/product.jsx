@@ -17,7 +17,7 @@ const Home =homeStyles();
         <Link
                      to={`/product/${id}`}
                      >
-      <Grid container spacing={0}>
+      <Grid justifyContent="center" container spacing={0}>
 
       <div className="items">
  
@@ -27,22 +27,28 @@ const Home =homeStyles();
  
 
     </div>  
-      <Grid item xs={7} >
-      <p className="tittle_product">{tittle}</p>
-      </Grid>
-      <Grid item xs={5} >
-      <p className={Home.price} >{price} $</p>
+    <Grid item xs={10} >
+      <p style={{
+        margin:0,
+        paddingTop:5,
+        fontSize:"1.4vw",
+        color:"rgb(78,78,78)"
+        }} >
+          {price} $
+          </p>
       </Grid>
       <Grid item xs={12} >
-        <div className={Home.cont_description}>
-      <p className="descriptionProduct" >{description}</p>
-      </div>
+      <p style={{marginBottom:"0"}}className="tittle_product">{tittle}</p>
       </Grid>
+
+   
+
+ 
       <Grid item xs={12} >
         <div className="cont_button">
-       <Grid container>
+       <Grid justifyContent="center" container>
          <Grid item xs={9}>
-        <a href className="text_button" >
+        <a href style={{marginTop:".2vw"}} >
       Ver producto
         </a>
         </Grid>

@@ -7,7 +7,9 @@ import Published from '../published/published'
 import Publish from '../publish/publish'
 import News from '../news/news'
 import CommentsAdmin from '../comments/comments'
+import {useUser}from '../../../context/dataProvider'
 const Dashboard =()=>{
+    const {ADMcomments} = useUser()
     let url =`http://localhost:5000/countComents`
         const[id,setId]=useState()
     const [coment,setComent]=useState()
@@ -19,7 +21,7 @@ const Dashboard =()=>{
         }
         useEffect(()=>{
             fetchApi()
-          },[id])
+          },[id,ADMcomments])
 const [view,setView]=useState(0)
     return(
         <div>

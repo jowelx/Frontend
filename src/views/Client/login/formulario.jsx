@@ -12,12 +12,12 @@ import Button from '@material-ui/core/Button';
 import axios from 'axios'
 import {login} from '../../../styles/formulario'
 import { Redirect } from 'react-router';
-
+import{ useUser} from '../../../context/dataProvider';
 const Form =()=> {
 
 
       const Login =login() 
-        
+        const {setUserC}= useUser();
      
     
 
@@ -29,9 +29,7 @@ const Form =()=> {
         const [pass , setPass]=useState({
           password:""
         })
-        const [user , setUser]=useState({
-          user:""
-        })
+        const [user , setUser]=useState([])
         const[redirect,setRedirect]=useState()
         const handleChange = (prop) => (event) => {
           setValues({ ...values, [prop]: event.target.value });
@@ -40,7 +38,7 @@ const Form =()=> {
         const handleClickShowPassword = () => {
           setValues({ ...values, showPassword: !values.showPassword });
         };
-      
+
         const handleMouseDownPassword = (event) => {
           event.preventDefault();
         };
@@ -50,7 +48,7 @@ const Form =()=> {
          .then(response => {
         
         console.log(response)
-        setUser(response.data)
+        setUser(response.data.user)
         console.log(response.data.type)
         setPass(response.data)
         setRedirect(response.data.type)
@@ -62,7 +60,7 @@ const Form =()=> {
       }
     return(
       <div >
-        {redirect ==="succesClient"? <Redirect to="/"/> :pass ==="succesAdmin"&& <Redirect to="/dashboard"/>}
+        {redirect ==="succesClient"? [<Redirect to="/"/>, setUserC(user)] :pass ==="succesAdmin"&& <Redirect to="/dashboard"/>}
         <Grid justifyContent="center"  container>
             <Grid item={12}>
             <div className={Login.cont_form}>

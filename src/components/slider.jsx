@@ -66,7 +66,7 @@ const Slider=()=> {
                   overflow: 'hidden',
                   width: 'auto',
                   height: "auto",
-                  maxHeight: "50vw",
+                  maxHeight: "60vw",
                 }}
                 src={step.url}
                

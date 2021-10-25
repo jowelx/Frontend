@@ -4,19 +4,24 @@ import { useState,useEffect,useMemo,useContext } from 'react';
 export const DataProvider =(props)=>{
    const route = 'http://localhost:5000'
     const url ='http://localhost:5000/user';
-    const [user,setUser]=useState([]);
+    const [user,setUserC]=useState([]);
+    const [ADMcomments,setADMcomments]=useState()
     const fetchApi = async() =>{
       const response = await fetch(url);
       
       const responseJSON = await response.json();
-      setUser(responseJSON);
+      setUserC(responseJSON);
       console.log(responseJSON)
     }
     useEffect(()=>{
       fetchApi()
     },[])
     const valueUser = useMemo(()=>{
-      return({user})
+      return({user,
+              setUserC,
+              ADMcomments,
+              setADMcomments
+      })
     },[user])
     return <UserContext.Provider value={valueUser} {...props}/>
 

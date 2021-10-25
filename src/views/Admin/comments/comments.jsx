@@ -6,20 +6,21 @@ import ProductComments from './product/product'
 import ImageList from '@mui/material/ImageList';
 import axios from 'axios'
 const CommentsAdmin=({setid})=>{
-    const url ='http://localhost:5000/';   
+      
     const [items,setItems]=useState([]);
     const [coments,setComents]=useState([])
-    const[id,setId]=useState(0)
+    const[id,setId]=useState()
     const fetchApi = async() =>{
+      const url ='http://localhost:5000/'; 
         const response = await fetch(url);
         const responseJSON = await response.json();
           setItems(responseJSON);
           console.log(responseJSON)
         }
 
+        let url =`http://localhost:5000/updateComments/${id}`
         const fetchComent = async() =>{
         
-          let url =`http://localhost:5000/updateComments/${id}`
           axios.post(
             url,
             {
@@ -53,7 +54,7 @@ return(
 return(
    <>
    <Grid item xs={3}>
-     <div onClick={()=>[setId(item.id),setid(item.id)]}>
+     <div onClick={()=>[setId(item.id)]}>
 <ProductComments 
  id={item.id}
  tittle={item.product_name} 
@@ -73,11 +74,12 @@ return(
 <ImageList sx={{backgroundColor:"rgb(255,255,255)",borderRadius:"1vw", width: "100%", height: 500 ,marginLeft:"-1.5vw",paddingRight:"1vw"}} cols={1} rowHeight={164}>
      
   
-<PanelComment id={id} user="joel" coments={coments}/>
+<PanelComment id={id} user="admin" coments={coments}/>
 </ImageList>
 </Grid>
 </Grid>
 <p>{id}</p>
+<p>{url}</p>
     </>
 )
 }

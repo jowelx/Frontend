@@ -38,7 +38,8 @@ const Publish= ({View})=>{
       price:"",
       year:"",
       description:"",
-      amount:""
+      amount:"",
+      category:""
    } )
     const maxNumber = 1;
   
@@ -54,6 +55,28 @@ const Publish= ({View})=>{
       {
         value: 'Usado',
         label: 'Usado',
+      }
+    ]; 
+    const category = [
+      {
+        value: 'Seguridad',
+        label: 'Seguridad',
+      },
+      {
+        value: 'Vehiculo',
+        label: 'Vehiculo',
+      },
+      {
+        value: 'Moto',
+        label: 'Moto',
+      },
+      {
+        value: 'Repuesto',
+        label: 'Repuesto',
+      },
+      {
+        value: 'Accesorio',
+        label: 'Accesorio',
       }
     ]; 
     const handleChangeData = (prop) => (event) => {
@@ -120,6 +143,22 @@ const Publish= ({View})=>{
           ))}</TextField>
           </Grid>  
           <Grid item md={12}>
+          <TextField 
+          style={{textAlign:"left"}} 
+          value={data.category}
+          onChange={handleChangeData('category')} 
+          select
+          id="standard-select-currency" 
+          className="input"
+          type="text" 
+          label="Categoria">       
+           {category.map((option) => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          ))}</TextField>
+          </Grid> 
+          <Grid item md={12}>
           <TextField        
            value={data.model}
           onChange={handleChangeData('model')}  className="input"type="text" label="Modelo del producto"/>
@@ -149,7 +188,7 @@ const Publish= ({View})=>{
           className="input"
           variant="outlined"
           type="text" 
-          rows={2}
+          rows={4}
           multiline
           label="Descripción del producto"/>
           </Grid>     

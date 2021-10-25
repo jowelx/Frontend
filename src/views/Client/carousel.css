@@ -1,0 +1,48 @@
+.rec.rec-arrow {
+    border-radius: 5vw;
+    opacity:0;
+
+    font-size: 1.4vw;
+    background-color: rgb(255, 255, 255);
+    box-shadow:  0 .2vw .5vw .0vw rgb(179, 179, 179);
+   }
+ 
+.rec.rec-arrow:focus {
+    border-radius: 5vw;
+    opacity:1;
+    background-color: rgb(255, 0, 0);
+    box-shadow:  0 .2vw .5vw .0vw rgb(143, 143, 143);
+ 
+}
+.rec.rec-arrow:disabled {
+    visibility: hidden;
+}
+
+.rec-carousel:hover .rec.rec-arrow {
+    opacity:1;
+}
+.rec.rec-arrow:focus:enabled {
+    color: rgb(22, 22, 22);
+    background-color: rgb(255, 255, 255);
+    box-shadow:  0 .2vw .5vw .0vw rgb(143, 143, 143);
+
+}
+.rec.rec-arrow:hover:enabled {
+    color: rgb(255, 255, 255);
+    background-color: rgb(36, 36, 36);
+    box-shadow:  0 .2vw .6vw .0vw rgb(170, 170, 170);
+}
+.tittle_category > a{
+    font-family: 'Zen Kurenaido', sans-serif;
+    
+ }
+.tittle_category:hover .tittle_arrow{
+  transform:rotate(90deg);
+  margin-left: .5vw;
+  color: rgb(255, 0, 0);
+
+   }
+.tittle_arrow{
+    font-size: 1.4vw;
+    transition: all 300ms ease
+}

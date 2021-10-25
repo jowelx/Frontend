@@ -41,7 +41,7 @@ const ProductComments =({id,tittle,img,com})=>{
        <div className="cont_button">
       <Grid container>
         <Grid item xs={9}>
-       <a href className="text_button" >
+       <a href style={{marginTop:".2vw"}}>
      Ver comentarios
        </a>
        </Grid>

@@ -9,38 +9,49 @@
  
 }
 .container{
-    margin-left: 2vw;
-        width:95%;
-        height: 100%;
+        position:relative;
+        margin-left: 1vw;
+        margin-top: 1vw;
+        margin-bottom: 1vw;
+        width:90%;   
+        height: 22vw;
         background-color: rgb(255, 255, 255);
-        border-radius:1%;
+        border-radius:.5vw;
         border:solid .1vw;
-        border-color:rgb(180,180,200);
-        transition:.4s;
-        box-shadow: 0vw .5vw .5vw .1vw rgba(68, 68, 68, 0);
+        border-color:rgba(105, 105, 105, 0);
+        transition:.5s;
+        box-shadow: 0vw .4vw .6vw .1vw rgb(219, 219, 219);
         cursor: pointer;
+        display: flex;
+        justify-content: center;
+   
 }
 .container:hover{
-    box-shadow: 0vw .5vw .5vw .1vw rgb(146, 151, 151);
+    box-shadow: 0vw .4vw .6vw .1vw rgb(170, 170, 170);
+    border-color:rgb(158, 158, 158);
 }
 .tittle_product{
-   
+    color:rgb(78, 78, 78);
+    font-size: 1vw;
     text-align: left;
     margin-left: 10%;
+    font-family: 'Zen Kurenaido', sans-serif;
+    font-weight: 600;
+    letter-spacing: .1vw;
 }
 .items{
-    margin-top:2%;
-    margin-left: 4%;
-    width: 90%;
+    margin-top:-1vw;
+    border-radius: .8vw;
+    width: 85%;
     height: 14vw;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
     overflow:hidden;
-    border-bottom:solid .1vw;
-    border-color: rgb(100,100,100);
-    
+   
+    background-color: rgb(255, 255, 255);
+    box-shadow:0vw 0.2vw .5vw .1vw rgb(220, 220, 220)
 }
 .descriptionProduct{
     text-align:justify;
@@ -51,20 +62,22 @@
     margin-left: 4%;
 }
 .cont_button{
-    position: relative;
+   
+    position: absolute;
     background-color: rgb(37, 37, 37);
-    width: 90%;
-    margin-top: 5%;
-    border-radius: .4vw;
-    margin-left: 5%;
+    width: 100%;
+  
+ 
     padding-top: 2%;
     font-size: 80%;
-    margin-bottom: 4%
+    bottom: 0vw;
 }
 .cont_button a{
    color: rgb(255, 255, 255);
    position: relative;
-   top: 2%;
+   display:flex;
+   justify-content: center;
+   align-items: center;
 }
 
 .icon_product{

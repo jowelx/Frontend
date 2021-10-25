@@ -7,22 +7,21 @@ import axios from 'axios'
 import InputRes from '../../../../components/response/inputRes'
 import Response from '../../../../components/response/response'
 import {CommentStyles} from '../../../../styles/comment' 
-import clsx from 'clsx'
 const PanelComment=({id,user,coments})=>{
     const [indice,setIndice]=useState()
     const coment = CommentStyles()
     const [loading,setLoading] = useState()
     const [res, setRes]=useState();
-
-    const [data,setData]=useState([coments])
-    const [answer,setAnswer]=useState([])
     const [comment,setCommment]=useState({
         user:user,
         id_product:id,
         comments:""
     })
     const handleChangeData = (prop) => (event) => {
-        setCommment({ ...comment, [prop]: event.target.value });
+        setCommment({ ...comment, 
+          [prop]: event.target.value,
+           id_product:id
+        });
       };
       const enviar=()=>{
         setLoading(true)
@@ -59,11 +58,10 @@ return(
 {coments.map((item,index)=>{
     return(
         <>
-        <Grid item xs={10}>
-          
+        <Grid item xs={12}>  
         <div className={coment.cont}>
         <Grid justifyContent="center" container>
-<Grid item xs={12}>
+        <Grid item xs={12}>
         <p style={{width:"100%"}} className={coment.user}>{item.coment.user}</p>
         </Grid>
         <Grid item xs={12}>
@@ -71,7 +69,7 @@ return(
         </Grid>
         <Grid item xs={12}>
           <div onClick={()=>setIndice(index)} style={{position:"relative",marginLeft:"1.5vw",marginTop:".5vw"}}>
-          <Icon style={{fontSize:20,marginTop:"-.4vw",color:"rgb(120,120,120)",position:"absolute"}}>reply</Icon>
+          <Icon className={coment.iconReply} style={{fontSize:20,marginTop:"-.4vw",position:"absolute"}}>reply</Icon>
         <p style={{fontSize:10,color:"rgb(120,120,120)",marginTop:"-1.5vw",paddingBottom:"1vw",marginLeft:"1.5vw"}}>Responder</p>
         </div>
         </Grid>
@@ -120,7 +118,7 @@ return(
     </div>
 </Grid>
         </Grid>
-       
+       <p>{id}</p>
         </>
    
 

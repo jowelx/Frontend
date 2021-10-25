@@ -29,7 +29,7 @@ const ProductId =(props)=> {
     <>
     {info.length >0 &&
     <>
-        <div>
+        <div style={{marginTop:"1vw"}}>
        
   <Grid justifyContent="center" container >
   <Grid item xs={8}>
@@ -38,7 +38,7 @@ const ProductId =(props)=> {
 <Grid item xs={4}>
 
 <Details
-id={info[0].id}
+ id={info[0].id}
  name={info[0].product_name}
  model={info[0].model}
  year={info[0].year}
@@ -46,6 +46,8 @@ id={info[0].id}
  price={info[0].price}
  brand={info[0].brand}
  amount={info[0].amount}
+ description={info[0].description_product}
+ category={info[0].category}
  />
 
 </Grid>

@@ -66,7 +66,7 @@ const Modify=()=> {
                   overflow: 'hidden',
                   width: 'auto',
                   height: "auto",
-                  maxHeight: "20vw",
+                  maxHeight: "200vw",
                 }}
                 src={step.url}
                

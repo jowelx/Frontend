@@ -32,7 +32,9 @@
 .p{
     margin: 0;
     color:rgb(255, 255, 255);
-    font-size: 60%;
+    font-size: 1.1vw;
+    font-family: 'Zen Kurenaido', sans-serif;
+    letter-spacing: .1vw;
 }
 .p2{
     margin: 0 0  .5vw 0;
@@ -45,8 +47,10 @@
  padding-left: 10%;
  text-align: left;
  background-color: rgba(255, 0, 0, 0);
- font-size: 110%;
+ font-size: 1.3vw;
  letter-spacing: .1vw;
+ font-family: 'Zen Kurenaido', sans-serif;
+ letter-spacing: .2vw;
 }
 .cont_Product{
     width: 100%;
@@ -124,5 +128,5 @@
   position: absolute;
   width: 100%;
   bottom: 5%;
-
+  font-family: 'Zen Kurenaido', sans-serif;
 }

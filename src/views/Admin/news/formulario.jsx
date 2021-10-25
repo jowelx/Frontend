@@ -37,6 +37,7 @@ const Form =()=>{
        };
     return(
         <>
+        <div style={{marginTop:"5vw"}}>
       <ImageUploading
         multiple
         value={images}
@@ -101,6 +102,7 @@ const Form =()=>{
       >
         Send
       </LoadingButton>
+      </div>
         </>
     )
 }

@@ -1,16 +1,19 @@
 import { makeStyles } from "@material-ui/core/styles";
 export const CommentStyles = makeStyles({
+    iconReply:{
+        color:"rgb(255,50,120)",
+    },
     cont:{
-        backgroundColor:"rgb(240,240,255)",
-        borderRadius:".8vw",
+        backgroundColor:"rgb(255,255,255)",
+        borderRadius:".4vw",
         marginBottom:".8vw",
-
-        
+        boxShadow:"0 .2vw .1vw 0vw rgb(210,210,210)",
+        border:"solid .1vw",
+        borderColor:"rgb(200,200,200)",
     },
     contRes:{
-        backgroundColor:"rgb(240,240,255)",
-      
-        borderRadius:"2vw",
+        backgroundColor:"rgb(255,255,255)", 
+        borderRadius:"0vw",
         marginBottom:".8vw"
      
     },
@@ -23,7 +26,7 @@ export const CommentStyles = makeStyles({
     },
     comment:{
         marginLeft:"2vw",
-        color:"rgb(20,20,20)",
+        color:"rgb(0,0,0)",
         paddingBottom:"1vw",
         width:"92%",
         height:"auto",
@@ -51,10 +54,13 @@ display:"none",
     },
 
     cont_Comments:{
+        marginTop:"1vw",
     marginBottom:"5vw",
-    backgroundColor:"rgb(245,245,255)",
+    backgroundColor:"rgb(255,255,255)",
     borderRadius:".5vw ",
-    boxShadow:"0 .2vw .2vw 0 rgb(120,120,120)",
+    border:"solid .1vw",
+    borderColor:"rgb(150,150,150)",
+    
 
     },
     cont_CommentsAdmin:{
