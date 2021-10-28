@@ -26,6 +26,10 @@ const Home =()=> {
     ]
     const category = [
       {
+        categoria: 'Nuevo',
+        variacion:4
+      },
+      {
         categoria: 'Moto',
         variacion:5
       },
@@ -35,11 +39,11 @@ const Home =()=> {
       },
       {
         categoria: 'Vehiculo',   
-        variacion:5
+        variacion:4
       },
       {
         categoria: 'Repuesto'  ,
-        variacion:6
+        variacion:5
       },
       {
         categoria: 'Accesorio' ,  
@@ -57,7 +61,7 @@ const Home =()=> {
            
             </Grid>
             <Grid item xs={12}>
-              {category.map(item=>{
+              {category.map(itemc=>{
                 return(
                   <Grid spacing={0} justifyContent="center" container>
                   <Grid item md={10}>
@@ -65,7 +69,7 @@ const Home =()=> {
                    <Grid container>
                      <Grid item md={2}>
                      <div className="tittle_category">
-                  <a href ={`/category/${item.categoria}`} style={
+                  <a href ={`/category/${itemc.categoria}`} style={
                     {
                       color:"rgb(60,60,60)",
                       fontSize:"1.6vw",
@@ -75,7 +79,7 @@ const Home =()=> {
                       textTransform: 'uppercase'
                       }
                       }>
-                        {item.categoria === "Seguridad"?item.categoria:item.categoria +"s"}
+                        {itemc.categoria === "Seguridad"?itemc.categoria:itemc.categoria +"s"}
                         <Icon 
                         className="tittle_arrow"
                       style={{
@@ -93,13 +97,13 @@ const Home =()=> {
                   <Carousel 
                
                   transitionMs={500}
-                  itemsToShow={item.variacion} 
-                  itemsToScroll={item.variacion}
-                  breakPoints={brackpoints}
+                  itemsToShow={itemc.variacion} 
+                  itemsToScroll={itemc.variacion}
+               
                   pagination={false}
                   easing="linear"
                   >
-                    {items.filter(e=>e.category === item.categoria&&e.amount >0).map(item =>{                 
+                    {items.filter(e=>e.category === itemc.categoria&&e.amount >0 || e.state === itemc.categoria && e.amount >0).map(item =>{                 
                        return(
                             <>     
                             <Product  

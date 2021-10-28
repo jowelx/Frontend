@@ -13,6 +13,7 @@ const Update =(props)=>{
     const [portada,setPortada]=useState()
     const [loading,setLoading] = useState()
     const [data,setData]=useState({
+      id:"",
       name_product:"",
       brand:"",
       state:"",
@@ -30,6 +31,7 @@ const Update =(props)=>{
         setImages(responseJSON[0].productInfo)
           setInfo(responseJSON[0].productInfo)
           setData({
+            id:responseJSON[0].productInfo.id,
             name_product:responseJSON[0].productInfo[0].product_name,
             brand:responseJSON[0].productInfo[0].brand,
             state:responseJSON[0].productInfo[0].state,

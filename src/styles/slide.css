@@ -67,10 +67,10 @@
     background-color: rgb(37, 37, 37);
     width: 100%;
   
- 
+ border-radius: .2vw;
     padding-top: 2%;
     font-size: 80%;
-    bottom: 0vw;
+    bottom: .1vw;
 }
 .cont_button a{
    color: rgb(255, 255, 255);

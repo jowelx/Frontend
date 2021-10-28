@@ -18,7 +18,7 @@ const ProductComments =({id,tittle,img,com})=>{
      <div className={Home.slider}>
        <div className="container">
      
-     <Grid container spacing={0}>
+     <Grid justifyContent="center" container spacing={0}>
 
      <div className="items">
 
@@ -28,10 +28,10 @@ const ProductComments =({id,tittle,img,com})=>{
 
 
    </div>  
-     <Grid item xs={7} >
+     <Grid item xs={10}>
      <p className="tittle_product">{tittle}</p>
      </Grid>
-     <Grid item xs={5} >
+     <Grid item xs={2} >
      <Badge color="secondary" style={{marginTop:15}} badgeContent={com}  >
 <Icon style={{color:"rgb(80,80,80)"}}>question_answer</Icon>
 </Badge>

@@ -64,8 +64,8 @@ display:"none",
 
     },
     cont_CommentsAdmin:{
-        borderRight:"solid .1vw",
-        boderColor:"rgb(255,20,20)"
+       
+      
     },
     cont_res:{
       marginBottom:"1vw",

@@ -67,7 +67,7 @@ const redirect=()=>{
         </TableHead>
         <TableBody >
           {items.map((item, index) => (
-            <StyledTableRow key={index}>
+            <StyledTableRow className={item.amount===0&&classes.deprecated} key={index}>
               <StyledTableCell component="th" scope="row">
                 {index}
               </StyledTableCell>
@@ -75,7 +75,7 @@ const redirect=()=>{
             
               <StyledTableCell align="center">{item.price}</StyledTableCell>
               <StyledTableCell align="center">{item.brand}</StyledTableCell>
-              <StyledTableCell align="center">{item.amount}</StyledTableCell>
+              <StyledTableCell className={item.amount===0&& classes.deprecated}align="center">{item.amount ===0?item.amount +"!":item.amount }</StyledTableCell>
               <StyledTableCell align="center">{item.model}</StyledTableCell>
         
               <StyledTableCell align="center">{item.year}</StyledTableCell>
@@ -126,6 +126,11 @@ const useStyles = makeStyles({
   table: {
     minWidth: 700,
   },
+  deprecated:{
+    backgroundColor:"rgb(250,150,150)",
+    color:"rgb(255,20,20)"
+  }
+  ,
   marginBottom: 20
 });
 const StyledTableCell = withStyles((theme) => ({
@@ -141,7 +146,7 @@ const StyledTableCell = withStyles((theme) => ({
 const StyledTableRow = withStyles((theme) => ({
   root: {
     '&:nth-of-type(odd)': {
-      backgroundColor: theme.palette.action.hover,
+     
     },
   },
 }))(TableRow);

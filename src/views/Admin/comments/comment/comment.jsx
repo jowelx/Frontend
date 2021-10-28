@@ -48,12 +48,11 @@ const PanelComment=({id,user,coments})=>{
 return(
     
     <>
-         {loading=== true && <div className="cargando"><CircularProgress color="primary" /><p>Publicando</p></div>}
-      
+         
         <Grid justifyContent="center" container>
 <Grid item xs={12}>
 <div  className={coment.cont_CommentsAdmin}>
-  <p className={coment.title}>Comentarios</p>
+ 
   <Grid justifyContent="center" container>
 {coments.map((item,index)=>{
     return(
