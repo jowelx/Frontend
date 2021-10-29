@@ -75,25 +75,60 @@ const enviar=()=>{
       };
       const category = [
         {
-          value: 'Seguridad',
-          label: 'Seguridad',
+        value: 'Accesorios',
+        label: 'Accesorios',
+        icon:'sell'
+      },
+      {
+        value: 'Baterias',
+        label: 'Baterias',
+        icon:'charging_station'
+      },
+        {
+          value: 'Cauchos',
+          label: 'Cauchos',
+          icon:'local_shipping'
         },
         {
-          value: 'Vehiculo',
-          label: 'Vehiculo',
+          value: 'Ferreteria',
+          label: 'Ferreteria',
+          icon:'handyman'
         },
         {
-          value: 'Moto',
-          label: 'Moto',
+          value: 'Filtros',
+          label: 'Filtros',
+          icon:'filter_alt'
         },
         {
-          value: 'Repuesto',
-          label: 'Repuesto',
+          value: 'Frenos',
+          label: 'Frenos',
+          icon:'build'
         },
         {
-          value: 'Accesorio',
-          label: 'Accesorio',
-        }
+          value: 'Limpieza',
+          label: 'Limpieza',
+          icon:'cleaning_services'
+        },
+        {
+          value: 'lubricantes',
+          label: 'lubricantes',
+          icon:'opacity'
+        },
+        {
+          value: 'Parches',
+          label: 'Parches',
+          icon:'grid_4x4'
+        },
+        {
+          value: 'Refrigerantes',
+          label: 'Refrigerantes',
+          icon:'ac_unit'
+        },
+        {
+          value: 'Repuestos',
+          label: 'Repuestos',
+          icon:'miscellaneous_services'
+        },
       ]; 
       const currencies = [
         {
@@ -182,7 +217,14 @@ const enviar=()=>{
           label="Categoria">       
            {category.map((option) => (
             <MenuItem key={option.value} value={option.value}>
+              <Grid container>
+                <Grid item xs={10}>
               {option.label}
+              </Grid>
+              <Grid item xs={2}>
+              <Icon style={{color:"rgb(80,80,80)"}}>{option.icon}</Icon>
+              </Grid>
+              </Grid>
             </MenuItem>
           ))}</TextField>
           </Grid> 

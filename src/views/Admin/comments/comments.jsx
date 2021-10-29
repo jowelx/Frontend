@@ -1,6 +1,6 @@
 import React from 'react'
 import {useState,useEffect}from 'react'
-import { Grid} from "@material-ui/core";
+import { Grid,Icon} from "@material-ui/core";
 import PanelComment from './comment/comment'
 import ProductComments from './product/product'
 import ImageList from '@mui/material/ImageList';
@@ -10,6 +10,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
 const CommentsAdmin=({setid})=>{
       
     const [items,setItems]=useState([]);
@@ -54,26 +55,61 @@ const CommentsAdmin=({setid})=>{
         },[id])
         const category = [
           {
-            categoria: 'Moto',
-            variacion:5
+          value: 'Accesorios',
+          label: 'Accesorios',
+          icon:'sell'
+        },
+        {
+          value: 'Baterias',
+          label: 'Baterias',
+          icon:'charging_station'
+        },
+          {
+            value: 'Cauchos',
+            label: 'Cauchos',
+            icon:'local_shipping'
           },
           {
-            categoria: 'Seguridad' ,
-            variacion:3
+            value: 'Ferreteria',
+            label: 'Ferreteria',
+            icon:'handyman'
           },
           {
-            categoria: 'Vehiculo',   
-            variacion:4
+            value: 'Filtros',
+            label: 'Filtros',
+            icon:'filter_alt'
           },
           {
-            categoria: 'Repuesto'  ,
-            variacion:5
+            value: 'Frenos',
+            label: 'Frenos',
+            icon:'build'
           },
           {
-            categoria: 'Accesorio' ,  
-            variacion:3
-          }
-        ]; 
+            value: 'Limpieza',
+            label: 'Limpieza',
+            icon:'cleaning_services'
+          },
+          {
+            value: 'lubricantes',
+            label: 'lubricantes',
+            icon:'opacity'
+          },
+          {
+            value: 'Parches',
+            label: 'Parches',
+            icon:'grid_4x4'
+          },
+          {
+            value: 'Refrigerantes',
+            label: 'Refrigerantes',
+            icon:'ac_unit'
+          },
+          {
+            value: 'Repuestos',
+            label: 'Repuestos',
+            icon:'miscellaneous_services'
+          },
+        ];
 return(
     <>
     <p>cjvkskglj</p>
@@ -82,6 +118,7 @@ return(
     <Grid container>
   {category.map(categoria=>{
     return(
+      <Grid item xs={12}>
    <div>
    <Accordion style={{margin:".5vw",backgroundColor:"rgb(240,240,240)"}}>
      <AccordionSummary
@@ -89,13 +126,21 @@ return(
        aria-controls="panel1a-content"
        id="panel1a-header"
      >
-       <Typography>{categoria.categoria === "Seguridad"?categoria.categoria:categoria.categoria +"s"}</Typography>
+       <Grid container>
+         <Grid item xs={11}>
+         <Typography>{categoria.value }</Typography>
+         </Grid>
+         <Grid item xs={1}>
+<Icon style={{color:"rgb(70,70,70)"}}>{categoria.icon}</Icon>
+         </Grid>
+       </Grid>
+   
      </AccordionSummary>
      <AccordionDetails>
        <Grid justifyContent="left" container>
 
       
-     {items.filter(e=>e.category === categoria.categoria).map((item,index)=>{
+     {items.filter(e=>e.category === categoria.value).map((item,index)=>{
 return(
    <>
    <Grid item xs={4}>
@@ -122,6 +167,7 @@ return(
    
 
  </div>
+ </Grid>
     )
   })}      
 
@@ -142,15 +188,17 @@ return(
 </Grid>
 </div>
 {coments === "undefined"?
-<p>este poducto no tiene comentarios</p>
+<Grid justifyContent="center" container>
+  <Grid item xs={10}>
+<img src="https://res.cloudinary.com/dfaaqkh9d/image/upload/v1635531754/logo/NComments_uiycgh.png" style={{width:"100%",opacity:.3}}/>
+  </Grid>
+</Grid>
 :
 <PanelComment id={id} user="admin" coments={coments}/>
 }
 </ImageList>
     </Grid>
 </Grid>
-<p>{id}</p>
-<p>{url}</p>
     </>
 )
 }

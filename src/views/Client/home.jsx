@@ -26,30 +26,54 @@ const Home =()=> {
     ]
     const category = [
       {
-        categoria: 'Nuevo',
+        categoria: 'Cauchos',
         variacion:4
       },
       {
-        categoria: 'Moto',
-        variacion:5
-      },
-      {
-        categoria: 'Seguridad' ,
-        variacion:3
-      },
-      {
-        categoria: 'Vehiculo',   
+        categoria: 'Baterias',
         variacion:4
       },
       {
-        categoria: 'Repuesto'  ,
-        variacion:5
+        categoria: 'lubricantes',
+        variacion:4
       },
       {
-        categoria: 'Accesorio' ,  
-        variacion:3
-      }
-    ]; 
+        categoria: 'Parches',
+        variacion:4
+      },
+      {
+        categoria: 'Pesas',
+        variacion:4
+      },
+      {
+        categoria: 'Repuestos',
+        variacion:4,
+      },
+      {
+        categoria: 'Limpieza',
+        variacion:4,
+      },
+      {
+        categoria: 'Accesorios',
+        variacion:4,
+      },
+      {
+        categoria: 'Refrigerantes',
+        variacion:4,
+      },
+      {
+        categoria: 'Ferreteria',
+        variacion:4,
+      },
+      {
+        categoria: 'Filtros',
+        variacion:4,
+      },
+      {
+        categoria: 'Frenos',
+        variacion:4,
+      },
+    ];
     return(
         <>
         
@@ -79,7 +103,7 @@ const Home =()=> {
                       textTransform: 'uppercase'
                       }
                       }>
-                        {itemc.categoria === "Seguridad"?itemc.categoria:itemc.categoria +"s"}
+                        {itemc.categoria }
                         <Icon 
                         className="tittle_arrow"
                       style={{
