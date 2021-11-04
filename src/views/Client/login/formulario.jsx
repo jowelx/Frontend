@@ -17,7 +17,7 @@ const Form =()=> {
 
 
       const Login =login() 
-        const {setUserC}= useUser();
+        const {setUserC,url}= useUser();
      
     
 
@@ -43,8 +43,8 @@ const Form =()=> {
           event.preventDefault();
         };
         const enviar=()=>{
-          let url ="http://localhost:5000/login"
-          axios.post(url,values)
+          let urle =url+"login"
+          axios.post(urle,values)
          .then(response => {
         
         console.log(response)

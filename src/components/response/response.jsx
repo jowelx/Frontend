@@ -5,7 +5,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import axios from 'axios'
 import {CommentStyles} from '../../styles/comment' 
 
-const Response =({user,coments})=>{
+const Response =({user,coments,setIndiceres,index})=>{
     const coment = CommentStyles()
     return(
         <>
@@ -18,9 +18,9 @@ const Response =({user,coments})=>{
         <p  className={coment.comment}>{coments}</p>
         </Grid>
         <Grid item xs={12}>
-          <div  style={{position:"relative",marginLeft:"1.5vw",marginTop:".5vw"}}>
+          <div onClick={()=>setIndiceres(index)} style={{position:"relative",marginLeft:"1.5vw",marginTop:".5vw"}}>
           <Icon  className={coment.iconReply} style={{fontSize:20,marginTop:"-.4vw",position:"absolute"}}>reply</Icon>
-        <p style={{fontSize:10,color:"rgb(120,120,120)",marginTop:"-1.5vw",paddingBottom:"1vw",marginLeft:"1.5vw"}}>Responder</p>
+        <p style={{cursor:"pointer",fontSize:10,color:"rgb(120,120,120)",marginTop:"-1.5vw",paddingBottom:"1vw",marginLeft:"1.5vw"}}>Responder</p>
         </div>
         </Grid>
      </Grid>

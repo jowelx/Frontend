@@ -72,24 +72,24 @@ if(Views!==menu_item){
              onClick={()=>[setMenu_item(index ),View(index)]} button key={index}>
             <ListItemIcon  className={
               menu_item === index ?
-               menu_item === 0 ? Menu.active0 :
-               menu_item === 1 ? Menu.active1 :
+                menu_item === 0 ? Menu.active0:
+                menu_item === 1 ? Menu.active1:
                 menu_item === 2 ? Menu.active2:  
                 menu_item === 4 ? Menu.active4: 
                 menu_item === 5 ? Menu.active5:
                 menu_item === 6 && Menu.active6:
                 Menu.item}>{index  === 0 ? <Icon>poll</Icon> : 
-                index  ===1 ? <Icon>calendar_today</Icon>:
+                index  ===1? <Icon>calendar_today</Icon>:
                 index  ===2? <Icon>done_all</Icon>:
-                index   ===3 ?  
+                index  ===3?  
                  <> 
               <Badge badgeContent={comments} color="secondary">
-                <Icon className={ menu_item === 3 ? Menu.active3: Menu.item}>forum</Icon>
+                <Icon className={menu_item===3?Menu.active3: Menu.item}>forum</Icon>
               </Badge>
               </>: 
                 index  === 4 ? <Icon>paid</Icon>:
                 index  === 5 ? <Icon>timer</Icon>:
-                index  === 6 && <Icon>card_giftcard</Icon>
+                index  === 6 &&<Icon>card_giftcard</Icon>
                 }
                 </ListItemIcon>
             <ListItemText className={Menu.item} primary={text} />

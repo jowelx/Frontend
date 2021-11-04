@@ -8,12 +8,13 @@ import Button from '@mui/material/Button';
 import { useEffect,useState } from 'react';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
-
+import {useUser} from '../context/dataProvider'
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 
 
 const Slider=()=> {
+ 
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
 
@@ -33,10 +34,10 @@ const Slider=()=> {
   //
 // STEPPER //
  //
-  const url ='http://localhost:5000/news';   
+ const {url}=useUser()
     const [items,setItems]=useState([]);
     const fetchApi = async() =>{
-    const response = await fetch(url);
+    const response = await fetch(url+"news");
     const responseJSON = await response.json();
       setItems(responseJSON);
       console.log(responseJSON)

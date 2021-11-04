@@ -8,12 +8,15 @@ import Button from '@mui/material/Button';
 import { useEffect,useState } from 'react';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
-
+import Product from '../../../components/product'
+import { Grid} from "@material-ui/core";
+import {useUser} from '../../../context/dataProvider'
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 
 
 const Modify=()=> {
+  const {url}= useUser();
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
 
@@ -33,7 +36,7 @@ const Modify=()=> {
   //
 // STEPPER //
  //
-  const url ='http://localhost:5000/news';   
+   
     const [items,setItems]=useState([]);
     const fetchApi = async() =>{
     const response = await fetch(url);
@@ -46,57 +49,32 @@ const Modify=()=> {
       fetchApi()
     },[])
   return (
-    <Box sx={{ maxWidth: "100%", flexGrow: 1 }}>
-    
-      <AutoPlaySwipeableViews
-        axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-        index={activeStep}
-        onChangeIndex={handleStepChange}
-        enableMouseEvents
-      >
-        {items.map((step, index) => (
-          <div style={{justifyContent:"center"}} key={index}>
-            {Math.abs(activeStep - index) <= 2 ? (
-              <Box
-                component="img"
-                sx={{
-               
-                  display: 'block',
-                  maxWidth: "100%",
-                  overflow: 'hidden',
-                  width: 'auto',
-                  height: "auto",
-                  maxHeight: "200vw",
-                }}
-                src={step.url}
-               
-              />
-            ) : null}
-          </div>
-        ))}
-      </AutoPlaySwipeableViews>
-      <MobileStepper
-        style={{backgroundColor:"rgb(255,20,20,0)"}}
-        steps={maxSteps}
-        position="static"
-        activeStep={activeStep}
-        nextButton={
-          <Button
-            size="small"
-            onClick={handleNext}
-            disabled={activeStep === maxSteps - 1}
-          >
-      
-          </Button>
-        }
-        backButton={
-          <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
-            
-        
-          </Button>
-        }
-      />
-    </Box>
+    <Grid container>
+ <>
+ {items.map(e=>{
+
+   return(
+<>
+{   e.product_name.toLowerCase().includes("cau") &&
+<Grid item xs={3}>
+<Product  
+                            id={e.id}
+                            tittle={e.product_name} 
+                            img={e.portada} 
+                            description={e.description_product}
+                            price={e.price}
+                             />   
+</Grid>
+
+}                    
+</>
+   )
+   
+ })}
+ </>
+    </Grid>
+
+
   );
 }
 

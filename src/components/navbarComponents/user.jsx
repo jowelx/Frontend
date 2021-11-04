@@ -8,11 +8,13 @@ import Button from '@material-ui/core/Button';
 import{ Link} from "react-router-dom"
 import axios from 'axios'
 import { Redirect } from 'react-router';
+import {useUser} from '../../context/dataProvider'
 const UserLoged = ({user })=>{
+  const {url}= useUser()
     const NavBar = navbar()
     const enviar=()=>{
-      const url="http://localhost:5000/loguot"
-      axios.post(url,"values")
+      const urle=url+"loguot"
+      axios.post(urle,"values")
 setRef(true)
     }
 const [ref,setRef]=useState(false);

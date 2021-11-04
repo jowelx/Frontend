@@ -19,13 +19,13 @@ import DirectionsIcon from '@mui/icons-material/Directions';
 import clsx from 'clsx';
 import MenuMobile from './menuMobile'
 const NavBar =()=> {
-  const {user} = useUser()
+  const {user,setBuscar,url} = useUser()
     const NavBar = navbar()
 
       const [cart,setCart]=useState(0)
     const fetchApi = async() =>{
-        const url = `http://localhost:5000/cart`
-        const response = await fetch(url);
+        
+        const response = await fetch(url+"cart");
         const responseJSON = await response.json();
           setCart(responseJSON.length)
           console.log('carrito' + +cart)
@@ -41,7 +41,7 @@ return(
             <Link
                      to={`/`}
                      >
-    <img  className={NavBar.logo}src="https://res.cloudinary.com/dfaaqkh9d/image/upload/v1631387370/logo/41a.amazon_logo_RGB_REV_poj3hr.png"/>
+    <img   className={NavBar.logo}src="https://res.cloudinary.com/dfaaqkh9d/image/upload/v1631387370/logo/41a.amazon_logo_RGB_REV_poj3hr.png"/>
    </Link>
     </Grid>
     <Grid item  xs={6} md={5}>
@@ -58,7 +58,9 @@ return(
        
       />
         <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-      <IconButton  sx={{ p: '10px' }} aria-label="search">
+      <IconButton 
+     
+      sx={{ p: '10px' }} aria-label="search">
         <SearchIcon />
       </IconButton>
     

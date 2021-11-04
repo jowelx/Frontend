@@ -6,14 +6,16 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import ImageUploading from "react-images-uploading";
 import axios from 'axios'
 import "./styles.css";
+import {useUser} from '../../../context/dataProvider'
 const Publish= ({View})=>{
+  const {url} = useUser();
   const [loading,setLoading] = useState()
   const [res, setRes]=useState();
     const enviar=()=>{
       setLoading(true)
-        let url ="http://localhost:5000/upload"
+        let urle =url+"upload"
         axios.post(
-          url,
+          urle,
           {"file":images,
           "data":data,
           "portada":portada

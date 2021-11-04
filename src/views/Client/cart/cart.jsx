@@ -3,14 +3,18 @@ import { useState,useEffect } from 'react';
 import {CartStyle} from '../../../styles/cart'
 import { Grid,IconButton,Icon,Button} from "@material-ui/core";
 import{ Link} from "react-router-dom"
+import LoadingButton from '@mui/lab/LoadingButton';
+import Divider from '@mui/material/Divider';
 import axios from 'axios'
+import {useUser}from '../../../context/dataProvider'
 const Cart =()=>{
+  const {url}=useUser();
   let total=0
   const cart = CartStyle()
     const [info,setInfo]=useState([])
     const[ refresh, setRefresh] =useState( "ok")
     const Delete =(id)=>{
-      const url_Delete =`http://localhost:5000/deleteCart/${id}`
+      const url_Delete =url+`deleteCart/${id}`
       axios.post(
         url_Delete,
         {"file":id
@@ -22,8 +26,8 @@ const Cart =()=>{
     })
     }
     const fetchApi = async() =>{
-        const url = 'http://localhost:5000/cart'
-        const response = await fetch(url);
+      
+        const response = await fetch(url+"cart");
         const responseJSON = await response.json();
           setInfo(responseJSON)
         }
@@ -80,23 +84,36 @@ const Cart =()=>{
             <Grid item xs={8}>
 <div className={cart.cont}>
   <Grid justifyContent="center"alignItems="center" container>
-  <Grid item xs={4}>
-  <p>total: </p>
+    <Grid item xs={6}>
+    <Grid justifyContent="center"alignItems="center" container>
+  <Grid item xs={2}>
+
+  <p style={{textAlign:"center"}}>Total: </p>
   </Grid>
-  <Grid item xs={4}>
-  <p> {total}</p>
+  
+  <Divider orientation="vertical" flexItem />
+  
+ 
+  <Grid item xs={2}>
+  <p style={{textAlign:"center"}}>${total}</p>
 </Grid>
+
+  <Divider orientation="vertical" flexItem />
+
 <Grid item xs={4}>
 <Button
         variant="contained"
         color="primary"
-       
+        style={{justifyContent:"center"}}
         endIcon={<Icon>send</Icon>}
       >
         Comprar
       </Button>
 </Grid>
 </Grid>
+    </Grid>
+  </Grid>
+
 </div>
             </Grid>
 </Grid>

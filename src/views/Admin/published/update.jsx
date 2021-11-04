@@ -5,10 +5,10 @@ import { Redirect } from 'react-router';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import ImageUploading from "react-images-uploading";
 import axios from 'axios'
-
+import {useUser}from '../../../context/dataProvider'
 const Update =(props)=>{
-    const url =`http://localhost:5000/product/${props.match.params.id}`;
-    const [info,setInfo]=useState([]);
+  const {url} = useUser() 
+     const [info,setInfo]=useState([]);
     const [images,setImages]=useState([]);
     const [portada,setPortada]=useState()
     const [loading,setLoading] = useState()
@@ -26,7 +26,9 @@ const Update =(props)=>{
 } )
     const [res, setRes]=useState();
     const fetchApi = async() =>{
-        const response = await fetch(url);
+     
+ 
+        const response = await fetch(url+`product/${props.match.params.id}`);
         const responseJSON = await response.json();
         setImages(responseJSON[0].productInfo)
           setInfo(responseJSON[0].productInfo)
@@ -54,9 +56,9 @@ const Update =(props)=>{
 const enviar=()=>{
   
     setLoading(true)
-      let url =`http://localhost:5000/update/${props.match.params.id}`
+      let urle = url+`update/${props.match.params.id}`
       axios.post(
-        url,
+        urle,
         {"file":images,
         "data":data,
        
@@ -187,7 +189,7 @@ const enviar=()=>{
             <TextField value={data.brand} onChange={handleChangeData('brand')} className="input"type="text" label="Marca"/>
             </Grid> 
             <Grid item md={12}>
-            <TextField value={data.amount} onChange={handleChangeData('amount')} className="input"type="text" label="Cantidad"/>
+            <TextField value={data.amount===0 ?[ <Icon>error_outline</Icon>]:data.amount} onChange={handleChangeData('amount')} className="input"type="text" label="Cantidad"/>
             </Grid>                   
             <Grid item md={12}>
             <TextField 

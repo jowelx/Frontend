@@ -9,6 +9,8 @@ import Modify from '../views/Admin/published/modifi'
 import Category from '../views/Client/category/category'
 import Cart from '../views/Client/cart/cart'
 import Navbar from '../components/navBar'
+import Footer from'../components/footer'
+import {useState} from 'react'
 import ForgotPassword  from '../views/Client/forgotPass/forgotPass'
 const PublicRoute = ({ component, ...options }) => {
   const isAuth = false;
@@ -17,12 +19,13 @@ const PublicRoute = ({ component, ...options }) => {
 };
 
 const PublicRoutes = () => {
+
   return (
 <>
 <Navbar/>
     <Switch>
    
-      <PublicRoute exact path="/" component={Home} />
+      <PublicRoute exact path="/" component={Home} val={false} />
       <PublicRoute exact path="/login" component={Login} />
       <PublicRoute exact path="/register" component={Register} />
       <PublicRoute exact path="/category/:categoria" component={Category} />
@@ -31,6 +34,7 @@ const PublicRoutes = () => {
       <PublicRoute exact path="/forgotPassword" component={ForgotPassword} />
       <PublicRoute exact path="/cart" component={Cart} />
     </Switch>
+    <Footer/>
   </>
   );
 };

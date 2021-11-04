@@ -1,0 +1,19 @@
+.iconA{
+    animation-name: op;
+    animation-iteration-count: infinite;
+    animation-duration: 2s;
+}
+@keyframes op{
+    0%{color :rgb(153, 41, 41);}
+    50%{color: rgb(255, 0, 21);}
+    100%{color: rgb(153, 41, 41);}
+}
+.aura{
+    background: -webkit-linear-gradient(37deg, rgba(203,122,41,1) 0%, rgba(232,171,78,1) 50%, rgba(179,81,7,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: rgb(0, 255, 13); 
+    animation-name: aura;
+    animation-iteration-count: infinite;
+    animation-duration: 2s;
+}

@@ -12,12 +12,13 @@ import Button from '@material-ui/core/Button';
 import axios from 'axios'
 import {register} from '../../../styles/formulario'
 import { Redirect } from 'react-router';
+import {useUser} from'../../../context/dataProvider'
 const Form =()=> {
+    const {url}=useUser();
 
-
-      const Register = register() 
+    const Register = register() 
         
-     const [passValidation,setPassvalidation]=useState()
+    const [passValidation,setPassvalidation]=useState()
     
 
         const [values, setValues] =useState({
@@ -42,8 +43,8 @@ const Form =()=> {
           event.preventDefault();
         };
         const enviar=()=>{
-          let url ="http://localhost:5000/register"
-          axios.post(url,values
+          let urle =url+"register"
+          axios.post(urle,values
             
           )
          .then(response => {setRes(response.data)

@@ -10,9 +10,9 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-
+import{useUser}from '../../../context/dataProvider'
 const CommentsAdmin=({setid})=>{
-      
+      const {url} = useUser();
     const [items,setItems]=useState([]);
     const [coments,setComents]=useState([])
     const [product,setProduct]=useState({
@@ -21,32 +21,26 @@ const CommentsAdmin=({setid})=>{
     })
     const[id,setId]=useState()
     const fetchApi = async() =>{
-      const url ='http://localhost:5000/'; 
+   
         const response = await fetch(url);
         const responseJSON = await response.json();
           setItems(responseJSON);
           console.log(responseJSON)
         }
-
-        let url =`http://localhost:5000/updateComments/${id}`
-        const fetchComent = async() =>{
-        
+        let urle =url+`updateComments/${id}`
+        const fetchComent = async() =>{      
           axios.post(
-            url,
+            urle,
             {
-            "data":id,
-           
-          } 
+            "data":id, 
+           } 
           )
          .then(response => { 
        console.log(response)
        setComents(response.data)
-      
-    
        }
         )
           }
-   
         useEffect(()=>{
           fetchApi()
         },[id])
@@ -57,57 +51,63 @@ const CommentsAdmin=({setid})=>{
           {
           value: 'Accesorios',
           label: 'Accesorios',
-          icon:'sell'
+          icon:'sell',
+          color:"rgb(255,80,80)"
         },
         {
           value: 'Baterias',
           label: 'Baterias',
-          icon:'charging_station'
+          icon:'charging_station',
+          color:"rgb(250,200,20)"
         },
           {
             value: 'Cauchos',
             label: 'Cauchos',
-            icon:'local_shipping'
+            icon:'local_shipping',
+            color:"rgb(240,60,200)"
+  
           },
           {
             value: 'Ferreteria',
             label: 'Ferreteria',
-            icon:'handyman'
+            icon:'handyman',
+            color:"rgb(255,80,40)"
           },
           {
             value: 'Filtros',
             label: 'Filtros',
-            icon:'filter_alt'
+            icon:'filter_alt',
+            color:"rgb(80,80,80)"
           },
           {
             value: 'Frenos',
             label: 'Frenos',
-            icon:'build'
+            icon:'build',
+            color:"rgb(00,255,140)"
           },
           {
             value: 'Limpieza',
             label: 'Limpieza',
-            icon:'cleaning_services'
+            icon:'cleaning_services',
+            color:"rgb(180,80,80)"
           },
           {
             value: 'lubricantes',
             label: 'lubricantes',
-            icon:'opacity'
-          },
-          {
-            value: 'Parches',
-            label: 'Parches',
-            icon:'grid_4x4'
+            icon:'opacity',
+            color:"rgb(50,240,120)"
           },
           {
             value: 'Refrigerantes',
             label: 'Refrigerantes',
-            icon:'ac_unit'
+            icon:'ac_unit',
+            color:"rgb(25,180,220)"
           },
           {
             value: 'Repuestos',
             label: 'Repuestos',
-            icon:'miscellaneous_services'
+            icon:'miscellaneous_services',
+            color:"rgb(80,80,80)"
           },
         ];
 return(
@@ -127,11 +127,18 @@ return(
        id="panel1a-header"
      >
        <Grid container>
-         <Grid item xs={11}>
+         <Grid item xs={2}>
          <Typography>{categoria.value }</Typography>
          </Grid>
+         <Grid item xs={9}>
+         {items.filter(e=>e.category === categoria.value&& e.comments>0).length >0 ?
+         <Icon className="iconA" style={{color:"rgb(250,40,40)"}}>announcement</Icon>
+        :  
+        <Icon style={{color:"rgb(80,80,80,0)"}}>announcement</Icon>
+         }  
+         </Grid>
          <Grid item xs={1}>
-<Icon style={{color:"rgb(70,70,70)"}}>{categoria.icon}</Icon>
+         <Icon style={{color:"rgba(70,70,70)"}}>{categoria.icon}</Icon>
          </Grid>
        </Grid>
    

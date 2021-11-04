@@ -8,15 +8,15 @@ import axios from 'axios'
 import { Redirect } from 'react-router';
 import{ Link} from "react-router-dom"
  const Details =({id,model,year,state,price,brand,name,amount,category,description})=>{
-    const {user} = useUser()
+    const {user,url} = useUser()
     const [active,setActive]=useState(1)
     const [cantidad,setCantidad]=useState(1)
     const [redirect,setRedirect]=useState(false)
     const enviar=()=>{
     
-        let url ="http://localhost:5000/cart"
+        let urle = url+"cart"
         axios.post(
-          url,
+          urle,
           {"id":id,
           "amount":cantidad,
           "user":user

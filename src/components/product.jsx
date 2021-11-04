@@ -45,10 +45,15 @@ const Home =homeStyles();
 
  
       <Grid item xs={12} >
-        <div className="cont_button">
+
+      </Grid>
+</Grid>
+
+</Link>
+<div className="cont_button">
        <Grid justifyContent="center" container>
          <Grid item xs={9}>
-        <a href style={{marginTop:".2vw"}} >
+        <a href={`/product/${id}`}      style={{marginTop:".2vw"}} >
       Ver producto
         </a>
         </Grid>
@@ -57,9 +62,6 @@ const Home =homeStyles();
         </Grid>
         </Grid>
         </div>
-      </Grid>
-</Grid>
-</Link>
 </div>
 </div>
      

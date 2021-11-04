@@ -5,11 +5,12 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import axios from 'axios'
 import {CommentStyles} from '../../styles/comment' 
 import clsx from 'clsx'
-const InputRes =({user,id_coment})=>{
+import {useUser}from '../../context/dataProvider'
+const InputRes =({user,id_coment,setRes,setLoading, setindice, setindiceres})=>{
+  const {url}= useUser()
   const [indice,setIndice]=useState()
     const coment = CommentStyles()
-    const [loading,setLoading] = useState()
-    const [res, setRes]=useState();
+  
     const [data,setData]=useState([])
     const [comment,setCommment]=useState({
         user:user,
@@ -22,9 +23,9 @@ const InputRes =({user,id_coment})=>{
  
       const enviar=()=>{
         setLoading(true)
-          let url ="http://localhost:5000/answers"
+          let urle =url+"answers"
           axios.post(
-            url,
+            urle,
             {
             "data":comment,
            
@@ -33,8 +34,12 @@ const InputRes =({user,id_coment})=>{
          .then(response => { 
        console.log(response)
        setRes(response.data)
+   
        if(response.data === "ok"){
         setLoading(false)
+        setCommment({ ...comment, comment: "" });
+        setindice("")
+        setindiceres("")
         }
     
        }
@@ -44,7 +49,7 @@ const InputRes =({user,id_coment})=>{
 
     return(
         <>
-        
+   
         <Grid justifyContent="center" container>
 <Grid item xs={11}>
 <div className={coment.cont_res}>
@@ -54,7 +59,7 @@ const InputRes =({user,id_coment})=>{
 <Grid item xs={10}>
 <TextField value={comment.comment} onChange={handleChangeData('comment')} 
 className={coment.input}
-type="text" label=" putooAgregar comentario"/>    
+type="text" label="Responder comentario"/>    
 </Grid>
 
 <Grid item xs={1}>

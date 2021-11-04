@@ -12,9 +12,11 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import axios from 'axios'
+import {useUser}from '../../../context/dataProvider'
 const Published =()=> {
+  const {url}= useUser()
     const classes = useStyles();
-    const url ='http://localhost:5000/';
+   
     const [items,setItems]=useState([]);
     const[ refresh, setRefresh] =useState( "ok")
     const fetchApi = async() =>{
@@ -28,7 +30,7 @@ const Published =()=> {
       fetchApi()
     },[refresh])
     const Delete =(id)=>{
-      const url_Delete =`http://localhost:5000/delete/${id}`
+      const url_Delete =url+`delete/${id}`
       axios.post(
         url_Delete,
         {"file":id
@@ -73,9 +75,9 @@ const redirect=()=>{
               </StyledTableCell>
               <StyledTableCell align="center"> {item.product_name}</StyledTableCell>
             
-              <StyledTableCell align="center">{item.price}</StyledTableCell>
+              <StyledTableCell align="center">${item.price}</StyledTableCell>
               <StyledTableCell align="center">{item.brand}</StyledTableCell>
-              <StyledTableCell className={item.amount===0&& classes.deprecated}align="center">{item.amount ===0?item.amount +"!":item.amount }</StyledTableCell>
+              <StyledTableCell className={item.amount===0&& classes.deprecated}align="center">{item.amount ===0?[<Icon className="iconA">error</Icon> ]:item.amount }</StyledTableCell>
               <StyledTableCell align="center">{item.model}</StyledTableCell>
         
               <StyledTableCell align="center">{item.year}</StyledTableCell>
