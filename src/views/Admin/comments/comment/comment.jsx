@@ -9,6 +9,7 @@ import Response from '../../../../components/response/response'
 import {CommentStyles} from '../../../../styles/comment' 
 const PanelComment=({id,user,coments})=>{
     const [indice,setIndice]=useState()
+    const [indiceres,setIndiceres]=useState()
     const coment = CommentStyles()
     const [loading,setLoading] = useState()
     const [res, setRes]=useState();
@@ -87,6 +88,8 @@ return(
     <InputRes 
     user={user}
     id_coment={item.coment.id}
+    setindice={setIndice}
+    setindiceres={ setIndiceres}
     />
         }
         </Grid>

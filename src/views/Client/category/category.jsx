@@ -3,10 +3,12 @@ import { useState,useEffect } from 'react';
 import { Grid} from "@material-ui/core";
 import Product from '../../../components/product'
 import {CategoryStyles} from '../../../styles/category'
+import {useUser} from '../../../context/dataProvider'
 const Category =(props)=>{
+    const{url}= useUser()
     const page =props.match.params.categoria;
     const categoryStyles=CategoryStyles();
-    const url ='http://localhost:5000/'; 
+    
     const [items,setItems]=useState([]);
     const fetchApi = async() =>{
     const response = await fetch(url);

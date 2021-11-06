@@ -34,7 +34,7 @@ export const register = makeStyles({
     marginTop:"5%",
     width:"20%",
     textAlign:"center",
-    background: "linear-gradient(rgb(255, 255, 255),rgb(23.30, 230, 230));",
+    background: "linear-gradient(rgb(255, 255, 255),rgb(230.30, 230, 230));",
     
     marginLeft: "40%",
     padding:"6% 2%",
