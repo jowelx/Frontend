@@ -21,8 +21,8 @@ const Publish= ({View})=>{
           "portada":portada
         } 
         )
-       .then(response => { setRes(response.data)
-     console.log(response.data)
+       .then(response => { 
+      setRes(response.data)
      if(response.data === "ok"){
      setLoading(false)
      }
@@ -121,7 +121,7 @@ const Publish= ({View})=>{
     };
     return (
         <>
-        {loading=== true ? <div className="cargando"><CircularProgress color="primary" /><p>Publicando</p></div>:res==="ok" && View(2)}
+        {loading=== true && <div className="cargando"><CircularProgress color="primary" /><p>Publicando</p></div> }
         <Grid justifyContent="center" container>
            <Grid item xs={8}>
       <div className="App">

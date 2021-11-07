@@ -20,7 +20,7 @@ const Form =()=>{
           } 
           )
          .then(response => { 
-       console.log(response.data)
+  
        if(response.data === "ok"){
        setLoading(false)
        }
