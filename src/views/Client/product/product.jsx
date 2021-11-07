@@ -9,7 +9,7 @@ import Carousel from 'react-elastic-carousel';
 import Comments from '../../../components/coments'
 import{ useUser} from '../../../context/dataProvider';
 import { fontStyles }from '../../../styles/fonts'
-
+import clsx from 'clsx'
 const ProductId =(props)=> { 
   const font = fontStyles(); 
     const {user,url} = useUser()
@@ -45,10 +45,15 @@ const ProductId =(props)=> {
     <>
   <div style={{marginTop:"1vw"}}>    
   <Grid justifyContent="center" container >
-  <Grid item xs={8}>
+  <Grid item xs={12} md={8}>
   <div className="cont_Product">
   <Grid direction="row" container>
-  <Grid item xs={4}>
+  <Grid item xs={12} md={8}>
+  <Images
+  images={info[0].portada}
+  />
+</Grid>
+  <Grid item xs={12} md={4}>
   <Details
   id={info[0].id}
   name={info[0].product_name}
@@ -62,25 +67,25 @@ const ProductId =(props)=> {
   category={info[0].category}
   />
   </Grid>
-  <Grid item xs={8}>
-  <Images
-  images={info[0].portada}
-  />
-</Grid>
+
 </Grid>
 </div>
 </Grid>
 
 <Grid item xs={10}>
-<p className={font.font600}>Productos relacionados con {info[0].category}</p>
+<p className={clsx(font.font600,"p3")}>Productos relacionados con {info[0].category}</p>
 
 
 </Grid>
 <Grid item xs={12}>
-<Carousel           
-               transitionMs={500}
-               itemsToShow={5} 
-               itemsToScroll={5}           
+              <Carousel      
+    breakPoints={[
+      {width: 1, itemsToShow:1},
+      {width: 350, itemsToShow:2},
+      {width: 768, itemsToShow:4}
+     ]}
+   
+               transitionMs={500}         
                pagination={false}
                easing="linear"
                >

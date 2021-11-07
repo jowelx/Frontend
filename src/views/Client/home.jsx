@@ -34,21 +34,30 @@ const Home =()=> {
       label: 'Accesorios',
       icon:'sell',
       color:"rgb(255,80,80)",
-      variacion:"4"
+      variacion1:"2",
+      variacion2:"2",
+      variacion3:"4",
+      variacion4:"5"
     },
     {
       value: 'Baterias',
       label: 'Baterias',
       icon:'charging_station',
       color:"rgb(250,200,20)",
-      variacion:"5"
+      variacion1:"2",
+      variacion2:"2",
+      variacion3:"4",
+      variacion4:"5"
     },
       {
         value: 'Cauchos',
         label: 'Cauchos',
         icon:'local_shipping',
         color:"rgb(240,60,200)",
-        variacion:"4"
+        variacion1:"2",
+        variacion2:"2",
+        variacion3:"4",
+        variacion4:"5"
 
       },
       {
@@ -56,54 +65,75 @@ const Home =()=> {
         label: 'Ferreteria',
         icon:'handyman',
         color:"rgb(255,80,40)",
-        variacion:"4"
+        variacion1:"2",
+        variacion2:"2",
+        variacion3:"4",
+        variacion4:"5"
       },
       {
         value: 'Filtros',
         label: 'Filtros',
         icon:'filter_alt',
         color:"rgb(80,80,80)",
-        variacion:"5"
+        variacion1:"2",
+        variacion2:"2",
+        variacion3:"4",
+        variacion4:"5"
       },
       {
         value: 'Frenos',
         label: 'Frenos',
         icon:'build',
         color:"rgb(00,255,140)",
-        variacion:"3"
+        variacion1:"2",
+        variacion2:"2",
+        variacion3:"4",
+        variacion4:"5"
       },
       {
         value: 'Limpieza',
         label: 'Limpieza',
         icon:'cleaning_services',
         color:"rgb(180,80,80)",
-        variacion:"5"
+        variacion1:"2",
+        variacion2:"2",
+        variacion3:"4",
+        variacion4:"5"
       },
       {
         value: 'lubricantes',
         label: 'lubricantes',
         icon:'opacity',
         color:"rgb(50,240,120)",
-        variacion:"4"
+        variacion1:"2",
+        variacion2:"2",
+        variacion3:"4",
+        variacion4:"5"
       },
       {
         value: 'Refrigerantes',
         label: 'Refrigerantes',
         icon:'ac_unit',
         color:"rgb(25,180,220)",
-        variacion:"4"
+        variacion1:"2",
+        variacion2:"2",
+        variacion3:"4",
+        variacion4:"5"
       },
       {
         value: 'Repuestos',
         label: 'Repuestos',
         icon:'miscellaneous_services',
         color:"rgb(80,80,80)",
-        variacion:"5"
+        variacion1:"2",
+        variacion2:"2",
+        variacion3:"4",
+        variacion4:"5"
       },
     ];
     return(
         <>
-          <p>{buscar}$$</p> 
+  
         {buscar ===false? 
           <Grid  container >
           <Grid item xs={12}>
@@ -121,10 +151,10 @@ const Home =()=> {
                  <Grid container>
                    <Grid item md={2}>
                    <div className="tittle_category">
-                <a href ={`/category/${itemc.value}`} style={
+                <a  href ={`/category/${itemc.value}`} style={
                   {
                     color:"rgb(60,60,60)",
-                    fontSize:"1.6vw",
+                 
                     margin :"1vw",
                     display:"flex",
                     alignItems: "center",
@@ -145,13 +175,15 @@ const Home =()=> {
                       </Grid>
                      
                 </Grid>
-                <Grid item xs={6} sm={3}md={11}>
+                <Grid item xs={12} sm={3}md={11}>
                 <Carousel 
-             
+             breakPoints={[
+              {width: 1, itemsToShow:itemc.variacion1,itemsToScroll:itemc.variacion1},
+              {width: 550, itemsToShow:itemc.variacion2,itemsToScroll:itemc.variacion2},
+              {width: 768, itemsToShow:itemc.variacion3,itemsToScroll:itemc.variacion3},
+              {width: 1280, itemsToShow:itemc.variacion4,itemsToScroll:itemc.variacion4},
+             ]}
                 transitionMs={500}
-                itemsToShow={itemc.variacion} 
-                itemsToScroll={itemc.variacion}
-             
                 pagination={false}
                 easing="linear"
                 >
@@ -183,7 +215,7 @@ const Home =()=> {
         return(
      <>
      {   e.product_name.toLowerCase().includes("cau") &&
-     <Grid item xs={3}>
+     <Grid item xs={2}md={3}>
      <Product  
                                  id={e.id}
                                  tittle={e.product_name} 

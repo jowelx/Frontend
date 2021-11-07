@@ -130,3 +130,28 @@
   bottom: 5%;
   font-family: 'Zen Kurenaido', sans-serif;
 }
+.p3{
+    font-size: 1.5vw;
+}
+@media screen and (min-width:300px)and (max-width:599px){
+    .cont_info{
+        background-color: rgb(15, 15, 15);
+        height: 115vw;
+        border-radius: .8vw 0vw 0vw .8vw;
+        text-align: center;
+        position: relative;
+    }
+    .p{
+        
+        font-size:4.5vw;
+     
+    }
+    .Title_product{   
+  
+        font-size: 3vw;
+      
+       }
+       .p3{
+        font-size: 5vw;
+    }
+}

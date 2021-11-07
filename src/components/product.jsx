@@ -28,10 +28,12 @@ const Home =homeStyles();
 
     </div>  
     <Grid item xs={10} >
-      <p style={{
+      <p
+      className="price"
+      style={{
         margin:0,
         paddingTop:5,
-        fontSize:"1.4vw",
+       
         color:"rgb(78,78,78)"
         }} >
           {price} $

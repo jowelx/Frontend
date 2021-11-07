@@ -93,7 +93,7 @@ onClick={()=>cantidad=== amount ?setCantidad(amount):setCantidad(cantidad + 1)}
   
     </div>
   </Grid> 
-  <Grid item xs={12}>
+  <Grid item xs={10}>
   <p className={clsx("description_product","p")}>
   {description}
     </p>   

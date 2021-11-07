@@ -13,17 +13,14 @@ import Snackbar from '@mui/material/Snackbar';
 
 
 const Publish= ({View})=>{
-  const {url} = useUser();
-  const [images, setImages] = React.useState([]);
-  const [loading,setLoading] = useState()
-  const [res, setRes]=useState({
+    const {url} = useUser();
+    const [images, setImages] = React.useState([]);
+    const [loading,setLoading] = useState()
+    const [res, setRes]=useState({
     message:"",
     open:false
-  });
- 
+    });
     const [portada,setPortada]=useState()
-   
-  
     const [data,setData]=useState({
       name_product:"",
       brand:"",
@@ -114,18 +111,6 @@ const Publish= ({View})=>{
     function SlideTransition(props) {
       return <Slide {...props} direction="up" />;
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
     const [snackPack, setSnackPack] = React.useState([]);
     const [open, setOpen] = React.useState(false);

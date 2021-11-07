@@ -30,7 +30,7 @@ return(
 {items.filter(e=>e.category === page&&e.amount >0 || e.state === page && e.amount >0).map(item =>{
     return(
         <>
-        <Grid item xs={3}>
+        <Grid item xs={6} md={3}>
         <Product 
                id={item.id}
                tittle={item.product_name} 
