@@ -7,31 +7,23 @@ import ImageUploading from "react-images-uploading";
 import axios from 'axios'
 import "./styles.css";
 import {useUser} from '../../../context/dataProvider'
+import Slide from '@mui/material/Slide';
+import MuiAlert from '@mui/material/Alert';
+import Snackbar from '@mui/material/Snackbar';
+
+
 const Publish= ({View})=>{
   const {url} = useUser();
+  const [images, setImages] = React.useState([]);
   const [loading,setLoading] = useState()
-  const [res, setRes]=useState();
-    const enviar=()=>{
-      setLoading(true)
-        let urle =url+"upload"
-        axios.post(
-          urle,
-          {"file":images,
-          "data":data,
-          "portada":portada
-        } 
-        )
-       .then(response => { 
-      setRes(response.data)
-     if(response.data === "ok"){
-     setLoading(false)
-     }
-      })
-       
-    }
+  const [res, setRes]=useState({
+    message:"",
+    open:false
+  });
+ 
     const [portada,setPortada]=useState()
    
-    const [images, setImages] = React.useState([]);
+  
     const [data,setData]=useState({
       name_product:"",
       brand:"",
@@ -119,9 +111,95 @@ const Publish= ({View})=>{
     const handleChangeData = (prop) => (event) => {
       setData({ ...data, [prop]: event.target.value });
     };
+    function SlideTransition(props) {
+      return <Slide {...props} direction="up" />;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    const [snackPack, setSnackPack] = React.useState([]);
+    const [open, setOpen] = React.useState(false);
+    const [messageInfo, setMessageInfo] = React.useState(undefined);
+  
+    React.useEffect(() => {
+      if (snackPack.length && !messageInfo) {
+        // Set a new snack when we don't have an active one
+        setMessageInfo({ ...snackPack[0] });
+        setSnackPack((prev) => prev.slice(1));
+        setOpen(true);
+      } else if (snackPack.length && messageInfo && open) {
+        // Close an active snack when a new one is added
+        setOpen(false);
+      }
+    }, [snackPack, messageInfo, open]);
+  
+    const handleClick = (message) => () => {
+      setSnackPack((prev) => [...prev, { message, key: new Date().getTime() }]);
+    };
+  
+    const handleClose = (event, reason) => {
+      if (reason === 'clickaway') {
+        return;
+      }
+      setOpen(false);
+    };
+  
+    const handleExited = () => {
+      setMessageInfo(undefined);
+    };
+    const enviar=()=>{
+      setLoading(true)
+        let urle =url+"upload"
+        axios.post(
+          urle,
+          {"file":images,
+          "data":data,
+          "portada":portada
+        } 
+        )
+       .then(response => { 
+     
+     if(response.data === "ok"){
+      setRes({
+        message:"Tu producto se ha subido correctamente",
+        open:true
+      })
+      setOpen(true)
+      handleClick('Tu producto se ha subido correctamente')
+       setImages("")
+       setData({
+          name_product:"",
+          brand:"",
+          state:"",
+          model:"",
+          price:"",
+          year:"",
+          description:"",
+          amount:"",
+          category:""  
+       })
+     setLoading(false)
+     }
+      })
+       
+    }
+    const Alert = React.forwardRef(function Alert(props, ref) {
+      return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+    });
     return (
         <>
         {loading=== true && <div className="cargando"><CircularProgress color="primary" /><p>Publicando</p></div> }
+
         <Grid justifyContent="center" container>
            <Grid item xs={8}>
       <div className="App">
@@ -325,13 +403,29 @@ const Publish= ({View})=>{
                  </div>
               </Grid>
             </div>
-<p>{images.length}</p>
             </>
           )}
         </ImageUploading>
       </div>
       </Grid>
     </Grid>
+ <Grid container>
+<Grid item xs={12}>
+<Snackbar
+        key={messageInfo ? messageInfo.key : undefined}
+        open={open}
+        autoHideDuration={2500}
+        onClose={handleClose}
+        TransitionProps={{ onExited: handleExited }}
+       
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+      >
+            <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+            Tu producto se ha subido correctamente
+        </Alert>
+        </Snackbar>
+       </Grid>
+ </Grid>
       </>
     );
 }

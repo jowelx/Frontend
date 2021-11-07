@@ -67,18 +67,7 @@ const enviar=()=>{
      .then(response => { setRes(response.data)
    console.log(response.data)
    if(response.data === "ok"){
-     setData({
-      id:"",
-      name_product:"",
-      brand:"",
-      state:"",
-      model:"",
-      price:"",
-      year:"",
-      description:"",
-      amount:"",
-      category:""
-   })
+
    setLoading(false)
 
    }
@@ -165,7 +154,7 @@ const enviar=()=>{
         {info.length> 0 &&
         
           <>
-          {loading=== true && <div className="cargando"><CircularProgress color="primary" /><p>Guardando</p></div> }
+          {loading=== true ? <div className="cargando"><CircularProgress color="primary" /><p>Guardando</p></div> :res==="ok"&&<Redirect to={`/dashboard/${2}`}/>}
         
           <Grid justifyContent="center" container>
      
@@ -184,7 +173,8 @@ const enviar=()=>{
               onImageUpload,
               onImageUpdate,
               onImageRemove,
-              isDragging,         
+              isDragging,  
+                
             }) => (
              <>    
               <div className="upload__image-wrapper">

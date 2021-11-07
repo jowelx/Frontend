@@ -15,9 +15,9 @@ const PrivateRoutes = () => {
 <>
 
     <Switch>
-    <PrivateRoute exact path="/dashboard" component={Dashboard} />
+    <PrivateRoute exact path="/dashboard/:view" component={Dashboard} />
     <PrivateRoute exact path="/Update/:id" component={Update} />
-      <PrivateRoute  path="/" component={PublicRoutes } />
+    <PrivateRoute  path="/" component={PublicRoutes } />
       
 
     </Switch>
