@@ -19,16 +19,20 @@ import DirectionsIcon from '@mui/icons-material/Directions';
 import clsx from 'clsx';
 import MenuMobile from './menuMobile'
 const NavBar =()=> {
-  const {user,setBuscar,url} = useUser()
-    const NavBar = navbar()
 
+  const {user,setBuscar,url} = useUser()
+  const [data,setData]=useState()
+  const NavBar = navbar()
+  const handleChangeData = (prop) => (event) => {
+    setData(event.target.value);
+    };
       const [cart,setCart]=useState(0)
     const fetchApi = async() =>{
         
         const response = await fetch(url+"cart");
         const responseJSON = await response.json();
           setCart(responseJSON.length)
-          console.log('carrito' + +cart)
+          
         }
         useEffect(()=>{
             fetchApi()
@@ -55,13 +59,17 @@ return(
       <InputBase
         sx={{ ml: 1, flex: 1 }}
         placeholder="Buscar producto"
-       
+        onChange={handleChangeData('data')}
+        value={data}
       />
         <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+    
       <IconButton 
-     
+  
       sx={{ p: '10px' }} aria-label="search">
-        <SearchIcon />
+         <Link style={{margin:0,textDecoration:"none"}} to={`/search/${data}`}>
+         <SearchIcon />
+         </Link>
       </IconButton>
     
      

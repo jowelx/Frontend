@@ -5,7 +5,7 @@ export const DataProvider =(props)=>{
     const url ='https://leyla-back.herokuapp.com/';
     const [user,setUserC]=useState([]);
     const [ADMcomments,setADMcomments]=useState();
-    const [buscar,setBuscar]=useState(false);
+    const [buscar,setBuscar]=useState("");
     const fetchApi = async() =>{
       const response = await fetch(url+"user");
       

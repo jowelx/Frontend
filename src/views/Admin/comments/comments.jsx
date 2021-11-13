@@ -112,7 +112,7 @@ const CommentsAdmin=({setid})=>{
         ];
 return(
     <>
-    <p>cjvkskglj</p>
+   
     <Grid justifyContent="center" container>
     <Grid item xs={6}>
     <Grid container>

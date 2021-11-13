@@ -134,7 +134,7 @@ const Home =()=> {
     return(
         <>
   
-        {buscar ===false? 
+      
           <Grid  container >
           <Grid item xs={12}>
           <Slider/>
@@ -207,32 +207,7 @@ const Home =()=> {
             })}         
           </Grid>
       </Grid>
-      :
-      <Grid container>
-      <>
-      {items.map(e=>{
-     
-        return(
-     <>
-     {   e.product_name.toLowerCase().includes("cau") &&
-     <Grid item xs={2}md={3}>
-     <Product  
-                                 id={e.id}
-                                 tittle={e.product_name} 
-                                 img={e.portada} 
-                                 description={e.description_product}
-                                 price={e.price}
-                                  />   
-     </Grid>
-     
-     }                    
-     </>
-        )
-        
-      })}
-      </>
-         </Grid>
-      }
+      
       
         
         </>

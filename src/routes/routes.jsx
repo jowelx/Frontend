@@ -10,6 +10,7 @@ import Category from '../views/Client/category/category'
 import Cart from '../views/Client/cart/cart'
 import Navbar from '../components/navBar'
 import Footer from'../components/footer'
+import Search from '../views/Client/search/search'
 import {useState} from 'react'
 import ForgotPassword  from '../views/Client/forgotPass/forgotPass'
 const PublicRoute = ({ component, ...options }) => {
@@ -33,6 +34,7 @@ const PublicRoutes = () => {
       <PublicRoute exact path="/xxx" component={Modify} />
       <PublicRoute exact path="/forgotPassword" component={ForgotPassword} />
       <PublicRoute exact path="/cart" component={Cart} />
+      <PublicRoute exact path="/search/:search" component={Search} />
     </Switch>
     <Footer/>
   </>

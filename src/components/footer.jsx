@@ -96,8 +96,9 @@ const Footer =()=>{
     return(
         <>
         <Grid item xs={6}>
+        <a  href ={`/category/${item.value}`}>
         <p style={{margin:0,fontSize:".8vw",color:"rgb(200,200,200)"}} className={font.font600}>{item.value}</p>
-
+</a>
         </Grid>
 
         </>
