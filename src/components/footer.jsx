@@ -82,7 +82,7 @@ const Footer =()=>{
         <div style={{marginTop:"1vw",paddingTop:"4vw",height:"20vw",width:"100%",backgroundColor:"rgb(25,25,25)"}}>
 <Grid container>
   <Grid item xs={10}>
-  <Grid spacing={6} alignItems="center" justifyContent="center" container>
+  <Grid spacing={6}  justifyContent="center" container>
   <Grid item xs={2}>
   <img style={{width:"100%"}} src="https://res.cloudinary.com/dfaaqkh9d/image/upload/v1631387370/logo/41a.amazon_logo_RGB_REV_poj3hr.png"/>
 
@@ -96,23 +96,28 @@ const Footer =()=>{
     return(
         <>
         <Grid item xs={6}>
-        <a  href ={`/category/${item.value}`}>
+        <a  href={`/category/${item.value}`}>
         <p style={{margin:0,fontSize:".8vw",color:"rgb(200,200,200)"}} className={font.font600}>{item.value}</p>
 </a>
         </Grid>
 
         </>
     )
-})} 
+})}
+ 
 </Grid>
 
 
 </Grid>
-
+<Grid item xs={2}>
+<p style={{margin:1}} className={clsx(font.font600,footer.title )}>Sobre nosotros</p>
+<Divider style={{backgroundColor:"rgb(60,60,60)"}}  />
+</Grid>
 
 </Grid>
   </Grid>
 </Grid>
+<Divider style={{backgroundColor:"rgb(60,60,60)",marginTop:"2vw"}}  />
 
 
         </div>

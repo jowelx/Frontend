@@ -10,6 +10,7 @@ import Category from '../views/Client/category/category'
 import Cart from '../views/Client/cart/cart'
 import Navbar from '../components/navBar'
 import Footer from'../components/footer'
+import Page404 from'../components/404/404'
 import Search from '../views/Client/search/search'
 import {useState} from 'react'
 import ForgotPassword  from '../views/Client/forgotPass/forgotPass'
@@ -35,6 +36,7 @@ const PublicRoutes = () => {
       <PublicRoute exact path="/forgotPassword" component={ForgotPassword} />
       <PublicRoute exact path="/cart" component={Cart} />
       <PublicRoute exact path="/search/:search" component={Search} />
+      <PublicRoute  path="*" component={Page404} />
     </Switch>
     <Footer/>
   </>
