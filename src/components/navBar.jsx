@@ -45,7 +45,7 @@ return(
             <Link
                      to={`/`}
                      >
-    <img   className={NavBar.logo}src="https://res.cloudinary.com/dfaaqkh9d/image/upload/v1631387370/logo/41a.amazon_logo_RGB_REV_poj3hr.png"/>
+    <img   className={NavBar.logo}src="https://res.cloudinary.com/dfaaqkh9d/image/upload/v1636915471/logo/WhatsApp_Image_2021-11-14_at_11.24.16_AM_qsjcej.png"/>
    </Link>
     </Grid>
     <Grid item  xs={6} md={5}>
