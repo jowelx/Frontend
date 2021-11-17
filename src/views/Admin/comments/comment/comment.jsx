@@ -3,16 +3,17 @@ import { Grid,TextField,IconButton,Icon} from "@material-ui/core";
 import {useState,useEffect}from'react'
 import CircularProgress from '@material-ui/core/CircularProgress';
 import axios from 'axios'
-
 import InputRes from '../../../../components/response/inputRes'
 import Response from '../../../../components/response/response'
-import {CommentStyles} from '../../../../styles/comment' 
-const PanelComment=({id,user,coments})=>{
+import {CommentStyles} from '../../../../styles/comment'
+import {useUser} from '../../../../context/dataProvider' 
+const PanelComment=({id,user,coments,setRes})=>{
+    const {url}=useUser()
     const [indice,setIndice]=useState()
     const [indiceres,setIndiceres]=useState()
     const coment = CommentStyles()
     const [loading,setLoading] = useState()
-    const [res, setRes]=useState();
+
     const [comment,setCommment]=useState({
         user:user,
         id_product:id,
@@ -26,30 +27,27 @@ const PanelComment=({id,user,coments})=>{
       };
       const enviar=()=>{
         setLoading(true)
-          let url ="http://localhost:5000/comments"
+          let urle =url+"comments"
           axios.post(
-            url,
+            urle,
             {
             "data":comment,
-           
-          } 
+           } 
           )
          .then(response => { 
        console.log(response)
        setRes(response.data)
        if(response.data === "ok"){
         setLoading(false)
+           }
+          }
+         )     
         }
-    
-       }
-        )
-         
-      }
   
 return(
     
     <>
-         
+          {loading=== true && <div className="cargando"><CircularProgress color="primary" /><p>Publicando</p></div>}
         <Grid justifyContent="center" container>
 <Grid item xs={12}>
 <div  className={coment.cont_CommentsAdmin}>
@@ -77,7 +75,17 @@ return(
           {item.response.map((res,index)=>{
             return(
               <>
-              <Response user={user} coments={res.comment}/>
+              <Response user={user}setIndiceres={setIndiceres} index={index} coments={res.comment}/>
+              {indiceres ===index && 
+                    <InputRes 
+                    user={user}
+                    id_coment={item.coment.id}
+                    setRes={setRes}
+                    SetLoading={setLoading}
+                    setindice={setIndice}
+                    setIndiceres={setIndiceres}
+                    />
+               }
               </>
             )
           })}
@@ -86,10 +94,13 @@ return(
         {
           indice ===index&&
     <InputRes 
+ 
     user={user}
     id_coment={item.coment.id}
+    setRes={setRes}
+    SetLoading={setLoading}
     setindice={setIndice}
-    setindiceres={ setIndiceres}
+    setIndiceres={setIndiceres}
     />
         }
         </Grid>
@@ -110,7 +121,6 @@ return(
   
   }}type="text" label="Agregar comentario"/>    
 </Grid>
-
 <Grid item xs={1}>
 <IconButton className="cont_icon" style={{marginLeft:"2vw",marginTop:"2vw"}} onClick={()=>enviar()} aria-label="add to shopping cart">
                     <Icon color="primary">send</Icon>

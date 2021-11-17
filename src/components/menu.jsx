@@ -63,7 +63,7 @@ if(Views!==menu_item){
          'Publicar',
          'Publicados',
          'Comentarios',
-         'Ventas','pendientes','Novedades'].map((text, index) => (
+         'Ventas','Novedades'].map((text, index) => (
           <>
           <ListItem className={
             menu_item === index ?
@@ -71,7 +71,7 @@ if(Views!==menu_item){
              Menu.cont_item}
              onClick={()=>[setMenu_item(index ),View(index)]} button key={index}>
             <ListItemIcon  className={
-              menu_item === index ?
+                menu_item === index ?
                 menu_item === 0 ? Menu.active0:
                 menu_item === 1 ? Menu.active1:
                 menu_item === 2 ? Menu.active2:  

@@ -13,7 +13,9 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import{useUser}from '../../../context/dataProvider'
 const CommentsAdmin=({setid})=>{
       const {url} = useUser();
+
     const [items,setItems]=useState([]);
+    const [res, setRes]=useState();
     const [coments,setComents]=useState([])
     const [product,setProduct]=useState({
       name:"",
@@ -46,7 +48,7 @@ const CommentsAdmin=({setid})=>{
         },[id])
         useEffect(()=>{
           fetchComent()
-        },[id])
+        },[id,res])
         const category = [
           {
           value: 'Accesorios',
@@ -151,8 +153,6 @@ return(
 return(
    <>
    <Grid item xs={4}>
-
-
      <div onClick={()=>[setId(item.id),setProduct({name:item.product_name,img: item.portada})]}>
 <ProductComments 
  id={item.id}
@@ -201,7 +201,7 @@ return(
   </Grid>
 </Grid>
 :
-<PanelComment id={id} user="admin" coments={coments}/>
+<PanelComment id={id} user="admin" coments={coments} setRes={setRes}/>
 }
 </ImageList>
     </Grid>

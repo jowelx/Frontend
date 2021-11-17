@@ -6,7 +6,7 @@ import axios from 'axios'
 import {CommentStyles} from '../../styles/comment' 
 import clsx from 'clsx'
 import {useUser}from '../../context/dataProvider'
-const InputRes =({user,id_coment,setRes,setLoading, setindice, setindiceres})=>{
+const InputRes =({user,id_coment,setRes,SetLoading, setindice, setIndiceres})=>{
   const {url}= useUser()
   const [indice,setIndice]=useState()
     const coment = CommentStyles()
@@ -17,35 +17,31 @@ const InputRes =({user,id_coment,setRes,setLoading, setindice, setindiceres})=>{
         id_comment:id_coment,
         comment:""
     })
-    const handleChangeData = (prop) => (event) => {
+      const handleChangeData = (prop) => (event) => {
         setCommment({ ...comment, [prop]: event.target.value });
       };
- 
       const enviar=()=>{
-        setLoading(true)
+        SetLoading(true);
           let urle =url+"answers"
           axios.post(
             urle,
             {
             "data":comment,
-           
           } 
           )
          .then(response => { 
        console.log(response)
-       setRes(response.data)
+       setRes(id_coment)
    
        if(response.data === "ok"){
-        setLoading(false)
+        SetLoading(false)
         setCommment({ ...comment, comment: "" });
         setindice("")
-        setindiceres("")
-        }
-    
+        setIndiceres("")
        }
-        )
-         
       }
+     ) 
+    }
 
     return(
         <>

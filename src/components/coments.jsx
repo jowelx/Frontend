@@ -12,7 +12,7 @@ const Comments =({id,user})=>{
   const [indice,setIndice]=useState();
   const [indiceres,setIndiceres]=useState();
     const coment = CommentStyles();
-    const [loading,setLoading] = useState();
+    const [loading,setLoading] = useState(false);
     const [res, setRes]=useState();
     const [data,setData]=useState([]);
     const [answer,setAnswer]=useState([]);
@@ -28,10 +28,8 @@ const Comments =({id,user})=>{
         setRes("")
         const response = await fetch(url+`comments/${id}`);
         const responseJSON = await response.json();
-        setData(responseJSON)
-        console.log("wachin ")
-   
-         console.log(responseJSON)
+        setData(responseJSON)  
+        console.log(responseJSON)
         }
       const enviar=()=>{
         setLoading(true)
@@ -121,12 +119,12 @@ const Comments =({id,user})=>{
                     user={user}
                     id_coment={item.coment.id}
                     setRes={setRes}
-                    setLoading={setLoading}
+                    SetLoading={setLoading}
                     setindice={setIndice}
-                    setindiceres={ setIndiceres}
+                    setindiceres={setIndiceres}
                     />
                }
-                </>
+              </>
               )
             })}
           </Grid>
