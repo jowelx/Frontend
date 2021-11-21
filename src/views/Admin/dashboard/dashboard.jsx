@@ -8,6 +8,7 @@ import Publish from '../publish/publish'
 import News from '../news/news'
 import Sumary from '../summary/sumary'
 import CommentsAdmin from '../comments/comments'
+import Sell from '../sell/sell'
 import {useUser}from '../../../context/dataProvider'
 const Dashboard =(props)=>{
     const {ADMcomments,url} = useUser()
@@ -40,6 +41,7 @@ const Dashboard =(props)=>{
             {view ===1 && <Publish View={setView}/>}
             {view ===2 && <Published />}
             {view ===3 && <CommentsAdmin setid={setId}/>}
+            {view ===4 && <Sell />}
             {view ===6 && <News />}
             </Grid>
             </Grid>

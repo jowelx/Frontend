@@ -1,9 +1,13 @@
 //proveedor del context, variables, informacion que maneja el context
 import UserContext from './context'
 import { useState,useEffect,useMemo,useContext } from 'react';
+import { getUser } from '../tools/auth-helper';
 export const DataProvider =(props)=>{
-    const url ='https://leyla-back.herokuapp.com/';
-    const [user,setUserC]=useState([]);
+    const url ='http://localhost:4000/';
+    const USERNAME = "username"
+    const [user,setUserC]=useState(
+      ()=> localStorage.getItem(USERNAME)
+    );
     const [ADMcomments,setADMcomments]=useState();
     const [buscar,setBuscar]=useState("");
     const fetchApi = async() =>{
@@ -13,9 +17,7 @@ export const DataProvider =(props)=>{
       setUserC(responseJSON);
       console.log(responseJSON)
     }
-    useEffect(()=>{
-      fetchApi()
-    },[])
+   
     const valueUser = useMemo(()=>{
       return({user,
               setUserC,

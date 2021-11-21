@@ -13,6 +13,7 @@ import axios from 'axios'
 import {login} from '../../../styles/formulario'
 import { Redirect } from 'react-router';
 import{ useUser} from '../../../context/dataProvider';
+import { setToken } from '../../../tools/auth-helper';
 const Form =()=> {
 
 
@@ -48,12 +49,14 @@ const Form =()=> {
          .then(response => {
         
         console.log(response)
-        setUser(response.data.user)
+       // setUser(response.data.user)
         console.log(response.data.type)
         setPass(response.data)
+        setToken(response.data.token,response.data.user)
         setRedirect(response.data.type)
+      
         })
-         
+        
       }
       const prevent =(e)=>{
       e.preventDefault()

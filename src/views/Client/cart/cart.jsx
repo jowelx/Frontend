@@ -8,7 +8,9 @@ import Divider from '@mui/material/Divider';
 import axios from 'axios'
 import {useUser}from '../../../context/dataProvider'
 const Cart =()=>{
-  const {url}=useUser();
+  const {url,user}=useUser();
+
+ 
   let total=0
   const cart = CartStyle()
     const [info,setInfo]=useState([])
@@ -27,7 +29,7 @@ const Cart =()=>{
     }
     const fetchApi = async() =>{
       
-        const response = await fetch(url+"cart");
+        const response = await fetch(url+`cart/${user}`);
         const responseJSON = await response.json();
           setInfo(responseJSON)
         }
@@ -41,6 +43,7 @@ const Cart =()=>{
 
             {info && info.map((item,index)=>{
               total+= item.results[0].price *item.amount
+             
                 return(
                   <Grid item xs={8}>
                     
@@ -102,6 +105,7 @@ const Cart =()=>{
 
 <Grid item xs={4}>
 <Button
+        href={`/payment`}
         variant="contained"
         color="primary"
         style={{justifyContent:"center"}}
