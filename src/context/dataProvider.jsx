@@ -3,7 +3,7 @@ import UserContext from './context'
 import { useState,useEffect,useMemo,useContext } from 'react';
 import { getUser } from '../tools/auth-helper';
 export const DataProvider =(props)=>{
-    const url ='http://localhost:4000/';
+    const url ='https://leyla-back.herokuapp.com/';
     const USERNAME = "username"
     const [user,setUserC]=useState(
       ()=> localStorage.getItem(USERNAME)
