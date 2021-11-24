@@ -9,6 +9,7 @@ import{ Link} from "react-router-dom"
 import axios from 'axios'
 import { Redirect } from 'react-router';
 import {useUser} from '../../context/dataProvider'
+import { setToken } from '../../tools/auth-helper';
 const UserLoged = ({user })=>{
   const {url}= useUser()
     const NavBar = navbar()
@@ -39,7 +40,7 @@ return(
     className={NavBar.button}
     variant="outlined"
     color="primary"
-    onClick={()=>enviar()}
+    onClick={()=>setToken("","")}
     endIcon={<Icon>login</Icon>}
   >
      logout

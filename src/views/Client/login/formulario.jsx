@@ -1,6 +1,6 @@
 //formulario de inicio de session
 import { useState,useEffect } from 'react';
-import { Grid,TextField,InputLabel } from "@material-ui/core";
+import { Grid,TextField,InputLabel,Icon } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import IconButton from '@material-ui/core/IconButton';
 import Input from '@material-ui/core/Input';
@@ -69,6 +69,9 @@ const Form =()=> {
             <div className={Login.cont_form}>
               <Grid container>
         <form onSubmit={()=>prevent()} autoComplete="on" >
+        <Grid item={12}>
+    <Icon style={{fontSize: "5vw",color:"rgb(80,80,80)"}}>account_circle</Icon>
+    </Grid>
             <Grid item={12}>
     
         <TextField  color="secondary"error={pass==="user" &&true} id="standard-basic"className={Login.form} onChange={handleChange('user')}label={pass==="user"?"E-mail incorrecto" :"E-mail"} />

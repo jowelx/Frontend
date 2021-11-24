@@ -83,12 +83,7 @@ return(
   </Grid>
     <Grid item xs={2} md={3}>
 <Grid container>
-<Grid item xs={6} md={2}>
-<Badge color="secondary" className={NavBar.disabled} style={{marginTop:10}} badgeContent={100000}  >
-<Icon className={NavBar.iconsWhite}>card_giftcard</Icon>
-  </Badge>
-  
-</Grid>
+
 <Grid item xs={6} md={2}>
 <a href="/cart" >
 <Badge color="secondary" className={NavBar.disabled} style={{marginTop:10}} badgeContent={cart}  >

@@ -63,7 +63,7 @@ if(Views!==menu_item){
          'Publicar',
          'Publicados',
          'Comentarios',
-         'Ventas','Novedades'].map((text, index) => (
+         'Ventas'].map((text, index) => (
           <>
           <ListItem className={
             menu_item === index ?

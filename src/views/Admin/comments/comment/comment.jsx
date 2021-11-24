@@ -130,7 +130,7 @@ return(
     </div>
 </Grid>
         </Grid>
-       <p>{id}</p>
+    
         </>
    
 

@@ -65,6 +65,7 @@ const Form =()=> {
               
         <form onSubmit={()=>prevent()} autoComplete="off" >
         <Grid container spacing={3}justifyContent="center">
+        <Grid item md={12}>Registro de usuario</Grid>
         <Grid item md={6}>
     
     <TextField  color="secondary"error={res==="name" ?true:false} id="standard-basic"className={Register.form}value={values.name} onChange={handleChange('name')}label={res==="name"?"Este nombre ya esta en uso":"Nombre"} />
